@@ -13,7 +13,9 @@ class taskView{
                 <ul>';
         
                 foreach($peliculas as $pelicula){
-                    $html .= '<li>TITULO= '.$pelicula->titulo.' - DESCRIPCION= '.$pelicula->descripcion.' - ESTRENO= '.$pelicula->estreno.' - DIRECTOR= '.$pelicula->director.' - GENERO= '.$pelicula->id_genero.'</li>';
+                    $html .= '<li>TITULO= '.$pelicula->titulo.' - DESCRIPCION= 
+                    '.$pelicula->descripcion.' - ESTRENO= '.$pelicula->estreno.'
+                     - DIRECTOR= '.$pelicula->director.' - GENERO= '.$pelicula->id_genero.'</li>';
                 }
 
                 foreach($generos as $genero){
