@@ -24,15 +24,21 @@ class taskModel{
         return $tareas;
     }
 
+    function getAllData(){
+        $sentencia = $this->db->prepare( "SELECT * FROM pelicula INNER JOIN genero ON pelicula.id_genero=genero.id" );
+        $sentencia->execute();
+        $peliculaConGenero=$sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $peliculaConGenero;
+    }
+
     function insertarPelicula($titulo, $descripcion, $director, $estreno, $id_genero){
         $sentencia=$this->db->prepare("INSERT INTO pelicula(titulo, descripcion, director, estreno, id_genero) VALUES (?,?,?,?,?)");
         $sentencia->execute(array($titulo, $descripcion, $director, $estreno, $id_genero));
     }
 
-    function getPeliculaPorGenero(){
-        $sentencia = $this->db->prepare( "SELECT * FROM pelicula INNER JOIN genero ON pelicula.id_genero=genero.id" );
-        $sentencia->execute();
-        $peliculaConGenero=$sentencia->fetchAll(PDO::FETCH_OBJ);
+    function borrarPeliculaDB($idPelicula){
+        $sentencia=$this->db->prepare("DELETE FROM pelicula WHERE id_pelicula=?");
+        $sentencia->execute(array($idPelicula));
     }
     
 }

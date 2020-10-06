@@ -1,13 +1,43 @@
 <?php
 
+include_once "./libs/smarty/Smarty.class.php";
+
 class taskView{
 
+    private $smarty;
+
     function __construct(){
-        
+        $this->smarty = new Smarty();
     }
 
 
-    function showDatos($peliculas, $generos){
+    function showHome($peliculas,$generos){
+        $this->smarty->assign('titulo',"Peliculas");
+        $this->smarty->assign('peliculas', $peliculas);
+        $this->smarty->assign('genero', $generos);
+        $this->smarty->display('./templates/tabla.tpl');
+    }
+
+    function showHomeLocation(){
+        header("Location: ".BASE_URL."home");
+    }
+
+    function showFormularioInsertar($generos){
+        $this->smarty->assign('generos', $generos);
+        $this->smarty->display('./templates/insertarData.tpl');
+    }
+
+    function showFormularioEditar($generos){
+        $this->smarty->assign('generos', $generos);
+        $this->smarty->display('./templates/editarData.tpl');
+    }
+
+    function showError($mensaje=" "){
+        $this->smarty->assign('mensaje', $mensaje);
+        $this->smarty->display('./templates/error.tpl');
+    }
+
+    /*
 
         $html= '
                 <ul>';
@@ -66,5 +96,6 @@ class taskView{
 
         echo $html;
     }
+    */
 
 }
