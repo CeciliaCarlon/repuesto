@@ -2,7 +2,7 @@
 
 include_once "./libs/smarty/Smarty.class.php";
 
-class taskView{
+class peliculaView{
 
     private $smarty;
 
@@ -11,7 +11,15 @@ class taskView{
     }
 
 
-    function showHome($peliculas,$generos){
+    function showHome(){
+        $this->smarty->display('./templates/home.tpl');
+    }
+
+    function showLogin(){
+        $this->smarty->display('./templates/login.tpl');
+    }
+
+    function showTabla($peliculas,$generos){
         $this->smarty->assign('titulo',"Peliculas");
         $this->smarty->assign('peliculas', $peliculas);
         $this->smarty->assign('genero', $generos);
@@ -22,14 +30,19 @@ class taskView{
         header("Location: ".BASE_URL."home");
     }
 
+    function showTablaLocation(){
+        header("Location: ".BASE_URL."tabla");
+    }
+
     function showFormularioInsertar($generos){
         $this->smarty->assign('generos', $generos);
         $this->smarty->display('./templates/insertarData.tpl');
     }
 
-    function showFormularioEditar($generos){
+    function showFormularioEditar($generos,$datosPeliculaPorEditar){
         $this->smarty->assign('generos', $generos);
-        $this->smarty->display('./templates/editarData.tpl');
+        $this->smarty->assign('datos', $datosPeliculaPorEditar);
+        $this->smarty->display('./templates/editarPelicula.tpl');
     }
 
     function showError($mensaje=" "){
@@ -43,9 +56,7 @@ class taskView{
                 <ul>';
         
                 foreach($peliculas as $pelicula){
-                    $html .= '<li>TITULO= '.$pelicula->titulo.' - DESCRIPCION= 
-                    '.$pelicula->descripcion.' - ESTRENO= '.$pelicula->estreno.'
-                     - DIRECTOR= '.$pelicula->director.' - GENERO= '.$pelicula->id_genero.'</li>';
+                    $html .= '<li>TITULO= '.$pelicula->titulo.' - DESCRIPCION= '.$pelicula->descripcion.' - ESTRENO= '.$pelicula->estreno.' - DIRECTOR= '.$pelicula->director.' - GENERO= '.$pelicula->id_genero.'</li>';
                 }
 
                 foreach($generos as $genero){

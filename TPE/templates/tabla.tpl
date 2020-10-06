@@ -25,7 +25,7 @@
                                 <td>{$pelicula->estreno}</td>
                                 <td>{$pelicula->tipo}</td>
                                 <td><button><a href="delete/{$pelicula->id_pelicula}"><i class="fas fa-trash-alt"></i><button></td>
-                                <td><button><a href="formularioEditarPelicula/{$pelicula->id_pelicula}"><i class="far fa-edit"></i><button></td>
+                                <td><button><a href="editar/{$pelicula->id_pelicula}"><i class="far fa-edit"></i><button></td>
                             </tr>
                         {/foreach}
                     </tbody>

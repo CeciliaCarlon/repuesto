@@ -1,6 +1,6 @@
 <?php
 
-class taskModel{
+class peliculaModel{
 
     private $db;
     function __construct(){
@@ -31,6 +31,14 @@ class taskModel{
         return $peliculaConGenero;
     }
 
+    function getPeliculaID($id_pelicula){
+        $sentencia = $this->db->prepare("SELECT * FROM pelicula WHERE id_pelicula=?");
+        $sentencia->execute(array($id_pelicula));
+        $pelicula=$sentencia->fetch(PDO::FETCH_OBJ);
+        return $pelicula;
+    }
+
+
     function insertarPelicula($titulo, $descripcion, $director, $estreno, $id_genero){
         $sentencia=$this->db->prepare("INSERT INTO pelicula(titulo, descripcion, director, estreno, id_genero) VALUES (?,?,?,?,?)");
         $sentencia->execute(array($titulo, $descripcion, $director, $estreno, $id_genero));
@@ -39,6 +47,11 @@ class taskModel{
     function borrarPeliculaDB($idPelicula){
         $sentencia=$this->db->prepare("DELETE FROM pelicula WHERE id_pelicula=?");
         $sentencia->execute(array($idPelicula));
+    }
+
+    function updateTablaPelicula($id_pelicula, $titulo, $descripcion, $director, $estreno, $id_genero){
+        $sentencia=$this->db->prepare("UPDATE pelicula SET titulo=?, descripcion=?, director=?, estreno=?, id_genero=? WHERE id_pelicula=?");
+        $sentencia=execute(array($titulo, $descripcion, $director, $estreno, $id_genero, $id_pelicula));
     }
     
 }
