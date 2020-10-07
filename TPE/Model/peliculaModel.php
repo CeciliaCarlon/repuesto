@@ -51,7 +51,7 @@ class peliculaModel{
 
     function updateTablaPelicula($id_pelicula, $titulo, $descripcion, $director, $estreno, $id_genero){
         $sentencia=$this->db->prepare("UPDATE pelicula SET titulo=?, descripcion=?, director=?, estreno=?, id_genero=? WHERE id_pelicula=?");
-        $sentencia=execute(array($titulo, $descripcion, $director, $estreno, $id_genero, $id_pelicula));
+        $sentencia->execute(array($titulo, $descripcion, $director, $estreno, $id_genero, $id_pelicula));
     }
     
 }

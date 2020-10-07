@@ -41,7 +41,7 @@ class peliculaView{
 
     function showFormularioEditar($generos,$datosPeliculaPorEditar){
         $this->smarty->assign('generos', $generos);
-        $this->smarty->assign('datos', $datosPeliculaPorEditar);
+        $this->smarty->assign('datosPeliculaPorEditar', $datosPeliculaPorEditar);
         $this->smarty->display('./templates/editarPelicula.tpl');
     }
 

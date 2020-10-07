@@ -77,10 +77,10 @@ class peliculaController{
     }
 
     function ActualizarTablaPelicula($params=null){
-        if(empty($_POST['editar_titulo_input']) || isset($_POST['editar_titulo_input']) || empty($_POST['editar_descripcion_input']) || 
-        isset($_POST['editar_descripcion_input']) || empty($_POST['editar_director_input']) || isset($_POST['editar_director_input']) || 
-        empty($_POST['editar_estreno_input']) || isset($_POST['editar_estreno_input']) || empty($_POST['editar_genero_select']) || 
-        isset($_POST['editar_genero_select'])){
+        if(empty($_POST['editar_titulo_input']) || !isset($_POST['editar_titulo_input']) || empty($_POST['editar_descripcion_input']) || 
+        !isset($_POST['editar_descripcion_input']) || empty($_POST['editar_director_input']) || !isset($_POST['editar_director_input']) || 
+        empty($_POST['editar_estreno_input']) || !isset($_POST['editar_estreno_input']) || empty($_POST['editar_genero_select']) || 
+        !isset($_POST['editar_genero_select'])){
             $this->view->showError("No se pudo editar la pelicula. Por favor complete todos los campos.");
         }
         else{
