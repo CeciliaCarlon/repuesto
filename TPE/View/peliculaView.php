@@ -15,14 +15,10 @@ class peliculaView{
         $this->smarty->display('./templates/home.tpl');
     }
 
-    function showLogin(){
-        $this->smarty->display('./templates/login.tpl');
-    }
-
     function showTabla($peliculas,$generos){
         $this->smarty->assign('titulo',"Peliculas");
         $this->smarty->assign('peliculas', $peliculas);
-        $this->smarty->assign('genero', $generos);
+        $this->smarty->assign('generos', $generos);
         $this->smarty->display('./templates/tabla.tpl');
     }
 

@@ -15,7 +15,21 @@ class peliculaController{
 
     }
 
+    private function checkLoggedIn(){
+        session_start();
+        if(!isset($_SESSION['email'])){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
     function Home(){
+        $logeado=$this->checkLoggedIn();
+        if($logeado){
+            
+        }
         $this->view->showHome();
     }
 
@@ -48,27 +62,6 @@ class peliculaController{
         $this->view->showFormularioInsertar($genero);
     }
 
-    /*function EditarPelicula($params=null){
-        if(empty($_POST['editar_titulo_input']) || isset($_POST['editar_titulo_input']) || empty($_POST['editar_descripcion_input']) || 
-        isset($_POST['editar_descripcion_input']) || empty($_POST['editar_director_input']) || isset($_POST['editar_director_input']) || 
-        empty($_POST['editar_estreno_input']) || isset($_POST['editar_estreno_input']) || empty($_POST['editar_genero_select']) || 
-        isset($_POST['editar_genero_select'])){
-            $this->view->showError("No se pudo editar la pelicula. Por favor complete todos los campos.");
-        }
-        else{
-            $idPelicula=$params[':ID'];
-            $datosPeliculaPorEditar=$this->model->getPeliculaID($idPelicula);
-            $titulo=$_POST['editar_titulo_input'];
-            $descripcion=$_POST['editar_descripcion_input'];
-            $director=$_POST['editar_director_input'];
-            $estreno=$_POST['editar_estreno_input'];
-            $genero=$_POST['editar_genero_select'];
-            $this->model->updateTablaPelicula($titulo, $descripcion, $director, $estreno, $genero);
-            $this->view->showTablaLocation();
-        }
-    }
-    */
-
     function EditarPelicula($params=null){
         $idPelicula=$params[':ID'];
         $datosPeliculaPorEditar=$this->model->getPeliculaID($idPelicula);
@@ -95,19 +88,17 @@ class peliculaController{
         }
     }
 
-    function MostrarFormularioEditar(){
-        $genero=$this->model->getDatosGenero();
-        $this->view->showFormularioEditar($genero);
-    }
-
     function BorrarPelicula($params=null){
         $idPelicula=$params[':ID'];
         $this->model->borrarPeliculaDB($idPelicula);
         $this->view->showTablaLocation();
     }
 
-    function Login(){
-        $this->view->showLogin();
+    function FiltrarPelicula($params=null){
+        $id_genero=$params[':ID'];
+        $generoElegido=$this->model->getGeneroID($id_genero);
+        $peliculasFiltradas=$this->model->getPeliculaPorGenero($generoElegido->id);
+        $this->view->showTabla($peliculasFiltradas,$generoElegido);
     }
 
 }
