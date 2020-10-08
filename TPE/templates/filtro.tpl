@@ -1,11 +1,14 @@
 <aside>
     <div>
         <p>Filtrar por genero:</p>
-        <select name="select_genero">
-            <option type="submit" value=""><a href="tabla">Todas</option>
-            {foreach from=$generos item=genero}
-                <option type="submit" value="{$genero->id}"><a href="filtrar/{$genero->id}">{$genero->tipo}</option>
-            {/foreach}
-        </select>
+        <form action="filtrarPelicula" method="POST">
+            <select name="select_genero">
+                {foreach from=$allGeneros item=genero};
+                <option value="{$genero->id}">{$genero->tipo}</option>
+                {/foreach}
+            </select>
+        <button type="submit">Filtrar</button>
+        <button><a href="{BASE_URL}tabla">Mostrar Todas</button>
+        </form>
     </div>
 </aside>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-07 02:51:16
+/* Smarty version 3.1.34-dev-7, created on 2020-10-08 03:47:10
   from 'C:\xampp\htdocs\TPE\templates\editarPelicula.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f7d11047c6988_11296661',
+  'unifunc' => 'content_5f7e6f9e268ae6_73534341',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '28cb43f8c3867e8d9b4bb734b6c70b537adebc71' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\editarPelicula.tpl',
-      1 => 1602031870,
+      1 => 1602119199,
       2 => 'file',
     ),
   ),
@@ -23,11 +23,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7d11047c6988_11296661 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7e6f9e268ae6_73534341 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-<form action="updateTablaPeliculas/<?php echo $_smarty_tpl->tpl_vars['datosPeliculaPorEditar']->value->id_pelicula;?>
+<form action="editarPelicula/<?php echo $_smarty_tpl->tpl_vars['datosPeliculaPorEditar']->value->id_pelicula;?>
 " method="POST">
     <div class="tabla_inputs">
         <label>Titulo</label>
@@ -53,7 +53,6 @@ $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_
             <label>Genero</label>
             <div class="respuesta">
                 <select name="editar_genero_select">';
-                    <option value="">Genero</option>
                     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['generos']->value, 'genero');
 $_smarty_tpl->tpl_vars['genero']->do_else = true;

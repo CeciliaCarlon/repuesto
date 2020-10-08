@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 {include file="botonera.tpl"}
-<form action="insertar" method="POST">
+<form action="insertarPelicula" method="POST">
     <div class="tabla_inputs">
         <label>Titulo</label>
         <div class="respuesta">

@@ -11,10 +11,12 @@ class userView{
     }
 
     function showHome(){
+        $this->smarty->assign('BASE_URL' , BASE_URL);
         $this->smarty->display('./templates/home.tpl');
     }
 
     function showLogin(){
+        $this->smarty->assign('BASE_URL' , BASE_URL);
         $this->smarty->display('./templates/login.tpl');
     }
 

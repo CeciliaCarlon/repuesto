@@ -27,16 +27,13 @@ class peliculaController{
 
     function Home(){
         $logeado=$this->checkLoggedIn();
-        if($logeado){
-            
-        }
-        $this->view->showHome();
+        $this->view->showHome($logged);
     }
 
     function Tabla(){
         $pelicula=$this->model->getAllData();
         $genero=$this->model->getDatosGenero();
-        $this->view->showTabla($pelicula, $genero);
+        $this->view->showTabla($pelicula, $genero, $genero);
     }
 
     function InsertarPelicula(){
@@ -62,14 +59,14 @@ class peliculaController{
         $this->view->showFormularioInsertar($genero);
     }
 
-    function EditarPelicula($params=null){
+    function MostrarFormularioEditar($params=null){
         $idPelicula=$params[':ID'];
         $datosPeliculaPorEditar=$this->model->getPeliculaID($idPelicula);
         $genero=$this->model->getDatosGenero();
         $this->view->showFormularioEditar($genero,$datosPeliculaPorEditar);
     }
 
-    function ActualizarTablaPelicula($params=null){
+    function EditarPelicula($params=null){
         if(empty($_POST['editar_titulo_input']) || !isset($_POST['editar_titulo_input']) || empty($_POST['editar_descripcion_input']) || 
         !isset($_POST['editar_descripcion_input']) || empty($_POST['editar_director_input']) || !isset($_POST['editar_director_input']) || 
         empty($_POST['editar_estreno_input']) || !isset($_POST['editar_estreno_input']) || empty($_POST['editar_genero_select']) || 
@@ -94,11 +91,23 @@ class peliculaController{
         $this->view->showTablaLocation();
     }
 
-    function FiltrarPelicula($params=null){
-        $id_genero=$params[':ID'];
-        $generoElegido=$this->model->getGeneroID($id_genero);
-        $peliculasFiltradas=$this->model->getPeliculaPorGenero($generoElegido->id);
-        $this->view->showTabla($peliculasFiltradas,$generoElegido);
+    function FiltrarPelicula(){
+        if(empty($_POST['select_genero']) || !isset($_POST['select_genero'])){
+            $this->view->showError("No se pudo filtrar la pelicula. Por favor intentelo nuevamente.");
+        }
+        else{
+            $id_genero=$_POST['select_genero'];
+            $generoElegido=$this->model->getGeneroID($id_genero);
+            $peliculasFiltradas=$this->model->getPeliculaPorGenero($generoElegido->id);
+            $genero=$this->model->getDatosGenero();
+            $this->view->showTabla($peliculasFiltradas,$generoElegido, $genero);
+        }
+    }
+
+    function MostrarMasInformacionPelicula($params=null){
+        $idPelicula=$params[':ID'];
+        $datosPelicula=$this->model->getPeliculaID($idPelicula);
+        $this->view->showMasPelicula($datosPelicula);
     }
 
 }

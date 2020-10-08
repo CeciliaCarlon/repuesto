@@ -11,14 +11,17 @@ class peliculaView{
     }
 
 
-    function showHome(){
+    function showHome($logeado){
+        $this->smarty->assign('BASE_URL' , BASE_URL);
+        $this->smarty->assign('logeado',$logeado);
         $this->smarty->display('./templates/home.tpl');
     }
 
-    function showTabla($peliculas,$generos){
-        $this->smarty->assign('titulo',"Peliculas");
+    function showTabla($peliculas,$generos, $allGeneros){
+        $this->smarty->assign('BASE_URL' , BASE_URL);
         $this->smarty->assign('peliculas', $peliculas);
         $this->smarty->assign('generos', $generos);
+        $this->smarty->assign('allGeneros', $allGeneros);
         $this->smarty->display('./templates/tabla.tpl');
     }
 
@@ -31,19 +34,28 @@ class peliculaView{
     }
 
     function showFormularioInsertar($generos){
+        $this->smarty->assign('BASE_URL' , BASE_URL);
         $this->smarty->assign('generos', $generos);
-        $this->smarty->display('./templates/insertarData.tpl');
+        $this->smarty->display('./templates/insertarPelicula.tpl');
     }
 
     function showFormularioEditar($generos,$datosPeliculaPorEditar){
+        $this->smarty->assign('BASE_URL' , BASE_URL);
         $this->smarty->assign('generos', $generos);
         $this->smarty->assign('datosPeliculaPorEditar', $datosPeliculaPorEditar);
         $this->smarty->display('./templates/editarPelicula.tpl');
     }
 
     function showError($mensaje=" "){
+        $this->smarty->assign('BASE_URL' , BASE_URL);
         $this->smarty->assign('mensaje', $mensaje);
         $this->smarty->display('./templates/error.tpl');
+    }
+
+    function showMasPelicula($pelicula){
+        $this->smarty->assign('BASE_URL' , BASE_URL);
+        $this->smarty->assign('pelicula', $pelicula);
+        $this->smarty->display('./templates/soloPagePelicula.tpl');
     }
 
     /*

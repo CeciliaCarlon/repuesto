@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 {include file="botonera.tpl"}
-<form action="updateTablaPeliculas/{$datosPeliculaPorEditar->id_pelicula}" method="POST">
+<form action="editarPelicula/{$datosPeliculaPorEditar->id_pelicula}" method="POST">
     <div class="tabla_inputs">
         <label>Titulo</label>
             <div class="respuesta">

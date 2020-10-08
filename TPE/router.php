@@ -16,13 +16,19 @@
 
     $r->addRoute("verificarUser", "POST", "userController", "VerificarUsuario");
 
+    //filtro
+    $r->addRoute("filtrarPelicula", "POST", "peliculaController", "FiltrarPelicula");
+    //ver mas
+    $r->addRoute("verMasPelicula/:ID", "GET", "peliculaController", "MostrarMasInformacionPelicula");
+    //borrar
+    $r->addRoute("deletePelicula/:ID", "GET", "peliculaController", "BorrarPelicula");
+    //insertar
     $r->addRoute("formularioInsertarPelicula", "GET", "peliculaController", "MostrarFormularioInsertar");
-    $r->addRoute("insertar", "POST", "peliculaController", "InsertarPelicula");
-    $r->addRoute("delete/:ID", "GET", "peliculaController", "BorrarPelicula");
-    $r->addRoute("filtrar/:ID", "GET", "peliculaController", "FiltrarPelicula");
-    $r->addRoute("editar/updateTablaPeliculas/:ID", "POST", "peliculaController", "ActualizarTablaPelicula");
-    $r->addRoute("editar/:ID", "GET", "peliculaController", "EditarPelicula");
-    $r->addRoute("filtrar/:ID", "GET", "peliculaController", "FiltrarPelicula");
+    $r->addRoute("insertarPelicula", "POST", "peliculaController", "InsertarPelicula");
+    //editar
+    $r->addRoute("formularioEditarPelicula/:ID", "GET", "peliculaController", "MostrarFormularioEditar");
+    $r->addRoute("editarPelicula/:ID", "POST", "peliculaController", "EditarPelicula");
+
 
     //Ruta por defecto.
     $r->setDefaultRoute("peliculaController", "Home");
