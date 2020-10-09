@@ -58,14 +58,14 @@ class peliculaController{
     }
 
     function MostrarFormularioInsertarPelicula(){
-        $genero=$this->model->getDatosGenero();
+        $genero=$this->modelGenero->GetGeneros();
         $this->view->showFormularioInsertar($genero);
     }
 
     function MostrarFormularioEditarPelicula($params=null){
         $idPelicula=$params[':ID'];
         $datosPeliculaPorEditar=$this->model->getPeliculaID($idPelicula);
-        $genero=$this->model->getDatosGenero();
+        $genero=$this->modelGenero->GetGeneros();
         $this->view->showFormularioEditar($genero,$datosPeliculaPorEditar);
     }
 
@@ -100,9 +100,9 @@ class peliculaController{
         }
         else{
             $id_genero=$_POST['select_genero'];
-            $generoElegido=$this->model->getGeneroID($id_genero);
+            $generoElegido=$this->modelGenero->GetGeneroID($id_genero);
             $peliculasFiltradas=$this->model->getPeliculaPorGenero($generoElegido->id);
-            $genero=$this->model->getDatosGenero();
+            $genero=$this->modelGenero->GetGeneros();
             $this->view->showTabla($peliculasFiltradas,$generoElegido, $genero);
         }
     }

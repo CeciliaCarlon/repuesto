@@ -15,9 +15,11 @@ class generoModel{
         return $generos;
     }
 
-    function GetTask($id_generos){
-        $sentencia = $this->db->prepare("SELECT * FROM task WHERE id=?");
+    function GetGeneroID($id_generos){
+        $sentencia = $this->db->prepare("SELECT * FROM genero WHERE id=?");
         $sentencia->execute(array($id_generos));
+        $genero=$sentencia->fetch(PDO::FETCH_OBJ);
+        return $genero;
     }
 
     function insertTask($tipo) {
