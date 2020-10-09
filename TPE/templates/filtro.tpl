@@ -8,7 +8,7 @@
                 {/foreach}
             </select>
         <button type="submit">Filtrar</button>
-        <button><a href="{BASE_URL}tabla">Mostrar Todas</button>
+        <button><a href="{BASE_URL}tabla"></a>Mostrar Todas</button>
         </form>
     </div>
 </aside>

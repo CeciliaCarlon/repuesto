@@ -22,7 +22,7 @@ class peliculaView{
         $this->smarty->assign('peliculas', $peliculas);
         $this->smarty->assign('generos', $generos);
         $this->smarty->assign('allGeneros', $allGeneros);
-        $this->smarty->display('./templates/tabla.tpl');
+        $this->smarty->display('./templates/tablaPelicula.tpl');
     }
 
     function showHomeLocation(){

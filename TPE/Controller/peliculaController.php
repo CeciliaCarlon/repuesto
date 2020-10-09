@@ -2,16 +2,19 @@
 
 include_once './View/peliculaView.php';
 include_once './Model/peliculaModel.php';
+include_once './Model/generoModel.php';
 
 class peliculaController{
 
     private $view;
     private $model;
+    private $modelGenero;
 
     function __construct(){
 
         $this->view = new peliculaView();
         $this->model = new peliculaModel();
+        $this->modelGenero = new generoModel();
 
     }
 
@@ -32,7 +35,7 @@ class peliculaController{
 
     function Tabla(){
         $pelicula=$this->model->getAllData();
-        $genero=$this->model->getDatosGenero();
+        $genero=$this->modelGenero->GetGeneros();
         $this->view->showTabla($pelicula, $genero, $genero);
     }
 
@@ -54,12 +57,12 @@ class peliculaController{
         
     }
 
-    function MostrarFormularioInsertar(){
+    function MostrarFormularioInsertarPelicula(){
         $genero=$this->model->getDatosGenero();
         $this->view->showFormularioInsertar($genero);
     }
 
-    function MostrarFormularioEditar($params=null){
+    function MostrarFormularioEditarPelicula($params=null){
         $idPelicula=$params[':ID'];
         $datosPeliculaPorEditar=$this->model->getPeliculaID($idPelicula);
         $genero=$this->model->getDatosGenero();
