@@ -28,7 +28,7 @@
             </div>
         <div>
             <button type="submit">Editar</button>
-            <button><a href="{BASE_URL}tabla">Cancelar</button>
+            <button><a href="{BASE_URL}tabla">Cancelar</a></button>
         </div>
     </div>
 <form>   

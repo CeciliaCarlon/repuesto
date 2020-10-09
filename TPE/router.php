@@ -12,8 +12,10 @@
     // rutas
     $r->addRoute("home", "GET", "peliculaController", "Home");
     $r->addRoute("tabla", "GET", "peliculaController", "Tabla");
-    $r->addRoute("login", "GET", "userController", "Login");
 
+    //Login/Logout
+    $r->addRoute("login", "GET", "userController", "Login");
+    $r->addRoute("logout", "GET", "userController", "Logout");
     $r->addRoute("verificarUser", "POST", "userController", "VerificarUsuario");
 
     //filtro
@@ -29,14 +31,14 @@
     //insertar
     $r->addRoute("formularioInsertarPelicula", "GET", "peliculaController", "MostrarFormularioInsertarPelicula");
     $r->addRoute("insertarPelicula", "POST", "peliculaController", "InsertarPelicula");
-    $r->addRoute("formularioInsertarGenero", "GET", "generoController", "MostrarFormularioInsertarGenero");//ESTE
-    $r->addRoute("insertarGenero", "POST", "generoController", "InsertarGenero");//ESTE
+    $r->addRoute("formularioInsertarGenero", "GET", "generoController", "MostrarFormularioInsertarGenero");
+    $r->addRoute("insertarGenero", "POST", "generoController", "InsertarGenero");
 
     //editar
     $r->addRoute("formularioEditarPelicula/:ID", "GET", "peliculaController", "MostrarFormularioEditarPelicula");
     $r->addRoute("editarPelicula/:ID", "POST", "peliculaController", "EditarPelicula");
-    $r->addRoute("formularioEditarGenero/:ID", "GET", "generoController", "MostrarFormularioEditarGenero");//ESTE
-    $r->addRoute("editarGenero/:ID", "POST", "generoController", "EditarGenero");//ESTE
+    $r->addRoute("formularioEditarGenero/:ID", "GET", "generoController", "MostrarFormularioEditarGenero");
+    $r->addRoute("editarGenero/:ID", "POST", "generoController", "EditarGenero");
 
     //Ruta por defecto.
     $r->setDefaultRoute("peliculaController", "Home");

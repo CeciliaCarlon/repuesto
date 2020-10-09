@@ -10,18 +10,20 @@ class userView{
         $this->smarty = new Smarty();
     }
 
-    function showHome(){
-        $this->smarty->assign('BASE_URL' , BASE_URL);
-        $this->smarty->display('./templates/home.tpl');
+    function showHomeLocation(){
+        header("Location: ".BASE_URL."home");
     }
 
-    function showLogin(){
+    function showLogin($logeado){
         $this->smarty->assign('BASE_URL' , BASE_URL);
+        $this->smarty->assign('logeado',$logeado);
         $this->smarty->display('./templates/login.tpl');
     }
 
-    function showError($mensaje=" "){
+    function showError($mensaje=" ", $logeado){
+        $this->smarty->assign('BASE_URL' , BASE_URL);
         $this->smarty->assign('mensaje', $mensaje);
+        $this->smarty->assign('logeado',$logeado);
         $this->smarty->display('./templates/error.tpl');
     }
 }    

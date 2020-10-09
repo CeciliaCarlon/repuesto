@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-08 03:47:10
+/* Smarty version 3.1.34-dev-7, created on 2020-10-09 20:27:51
   from 'C:\xampp\htdocs\TPE\templates\editarPelicula.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f7e6f9e268ae6_73534341',
+  'unifunc' => 'content_5f80aba72e65b8_02403140',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '28cb43f8c3867e8d9b4bb734b6c70b537adebc71' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\editarPelicula.tpl',
-      1 => 1602119199,
+      1 => 1602268069,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7e6f9e268ae6_73534341 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f80aba72e65b8_02403140 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -70,7 +70,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         <div>
             <button type="submit">Editar</button>
             <button><a href="<?php echo BASE_URL;?>
-tabla">Cancelar</button>
+tabla">Cancelar</a></button>
         </div>
     </div>
 <form>   

@@ -15,14 +15,33 @@ class userController{
 
     }
 
+    private function checkLoggedIn(){
+        session_start();
+        if(!isset($_SESSION['email'])){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
     function Login(){
-        $this->view->showLogin();
+        $logeado=$this->checkLoggedIn();
+        $this->view->showLogin($logeado);
+    }
+
+    function Logout(){
+        session_start();
+        session_destroy();
+        $logeado=$this->checkLoggedIn();
+        $this->view->showHomeLocation($logeado);
     }
 
     function VerificarUsuario(){
+        $logeado=$this->checkLoggedIn();
         if (empty($_POST['input_email_login']) || !isset($_POST['input_email_login']) || 
         empty($_POST['input_contraseña_login']) || !isset($_POST['input_contraseña_login'])){
-            $this->view->showError("No se pudo iniciar sesion. Por favor complete todos los campos.");
+            $this->view->showError("No se pudo iniciar sesion. Por favor complete todos los campos.", $logeado);
         }
         else{
             $email=$_POST['input_email_login'];
@@ -37,43 +56,16 @@ class userController{
                     header("Location: ".BASE_URL."home");
                 }
                 else{
-                    $this->view->showError("La password ingresada es incorrecta. Por favor intente nuevamente");
+                    $this->view->showError("La password ingresada es incorrecta. Por favor intente nuevamente", $logeado);
                 }
             }
             else{
-                $this->view->showError("El email ingresado no esta registrado. Por favor intente nuevamente");
+                $this->view->showError("El email ingresado no esta registrado. Por favor intente nuevamente", $logeado);
             }
         }
     }
 
-    /*
-function VerifyUser(){
-        $user = $_POST["input_user"];
-        $pass = $_POST["input_pass"];
+    
 
-        if(isset($user)){
-            $userFromDB = $this->model->GetUser($user);
-
-            if(isset($userFromDB) && $userFromDB){
-                // Existe el usuario
-
-                if (password_verify($pass, $userFromDB->password)){
-
-                    session_start();
-                    $_SESSION["EMAIL"] = $userFromDB->email;
-                    $_SESSION['LAST_ACTIVITY'] = time();
-
-                    header("Location: ".BASE_URL."home");
-                }else{
-                    $this->view->ShowLogin("Contraseña incorrecta");
-                }
-
-            }else{
-                // No existe el user en la DB
-                $this->view->ShowLogin("El usuario no existe");
-            }
-        }
-    }
-
-    */
+   
 }    

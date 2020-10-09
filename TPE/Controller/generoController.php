@@ -7,32 +7,39 @@ class generoController{
 
     private $view;
     private $model;
+
     function __construct(){
 
-    $this->view = new generoView();
-    $this->model= new generoModel();
+        $this->view = new generoView();
+        $this->model= new generoModel();
 
+    }
+
+    private function checkLoggedIn(){
+        session_start();
+        if(!isset($_SESSION['email'])){
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     function ShowTablaGenero (){
+        $logeado=$this->checkLoggedIn();
         $tipo=$this->model->GetGeneros();
-        $this->view-> showTablaGenero( $tipo);
+        $this->view-> showTablaGenero($tipo, $logeado);
     }
 
-    function InsertTask(){
-        
-        $this->model->insertTask($_POST['input_tipo']);
-        $this->Home();
-    }
-
-    function InsertarTask(){
+    function InsertarGenero(){
+        $logeado=$this->checkLoggedIn();
         if(empty($_POST['input_tipo']) || !isset($_POST['input_tipo'])){
-            echo "No se pudo insertar";
+            $this->view->showError("No se pudo insertar el genero. Por favor complete todos los campos.", $logeado);
         }
         else{
             $tipo=$_POST['input_tipo'];
-            $this->model->insertTask($tipo);
-            $this->view->showHomeLocation();
+            $this->model->insertarGenero($tipo);
+            $this->view->showTablaLocation();
         }
 
 
@@ -44,16 +51,30 @@ class generoController{
         $this->view->showTablaLocation(); 
     }
 
-    function EditTask($params = null){
-        $genero_id = $params[':ID'];
-        $genero = $this->model->GetTask($generos_id);
-        
-        $this->view->showGeneroEditar($generos);
+    function EditarGenero($params = null){
+        $logeado=$this->checkLoggedIn();
+        if(empty($_POST['editar_genero_input']) || !isset($_POST['editar_genero_input'])){
+            $this->view->showError("No se pudo editar el genero. Por favor complete todos los campos.", $logeado);
+        }
+        else{
+            $id_genero=$params[':ID'];
+            $genero=$_POST['editar_genero_input'];
+            $this->model->UpdateGenero( $genero,$id_genero);
+            $this->view->showTablaLocation();
+        }
+    }
+    
+    function MostrarFormularioInsertarGenero (){
+        $logeado=$this->checkLoggedIn();
+        $genero=$this->model->GetGeneros();
+        $this->view->showFormularioInsertarGenero($genero, $logeado);
     }
 
-    /* *
-    function MostrarFormularioEditar(){
-        $genero=$this->model->getTasks();
-        $this->view->showGeneroEditar($genero);
-    }**/
+    function MostrarFormularioEditarGenero($params=null){
+        $logeado=$this->checkLoggedIn();
+        $id_genero=$params[':ID'];
+        $datosGeneroPorEditar=$this->model->getGeneroID($id_genero);
+        $genero=$this->model->GetGeneros();
+        $this->view->showFormularioEditarGenero($genero,$datosGeneroPorEditar, $logeado);
+    }
 }

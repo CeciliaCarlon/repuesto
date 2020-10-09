@@ -15,15 +15,15 @@ class generoModel{
         return $generos;
     }
 
-    function GetGeneroID($id_generos){
+    function getGeneroID($id_generos){
         $sentencia = $this->db->prepare("SELECT * FROM genero WHERE id=?");
         $sentencia->execute(array($id_generos));
-        $genero=$sentencia->fetch(PDO::FETCH_OBJ);
-        return $genero;
+        $generos=$sentencia->fetch(PDO::FETCH_OBJ);
+        return $generos;
     }
 
-    function insertTask($tipo) {
-        $sentencia = $this->db->prepare('INSERT INTO genero(tipo) VALUES (?)');
+    function insertarGenero($tipo) {
+        $sentencia = $this->db->prepare("INSERT INTO genero(tipo) VALUES (?)");
         $sentencia->execute(array($tipo));
     }
 
@@ -32,16 +32,9 @@ class generoModel{
         $sentencia -> execute  (array($generos_id));
     }
 
-
-    function  EditarGenero($generos_id) {  
-        $sentencia  = $this->db -> prepare ( "UPDATE genero SET  WHERE id =?" );
-        $sentencia->execute  ( array ($generos_id ));
-    }
-
-    function UpdateTask($generos_id){
-        $sentencia  = $this->db -> prepare ( "UPDATE genero SET  WHERE genero_id =?" );
-        $sentencia->execute ( array ($generos_id ));
-        
+    function UpdateGenero($genero,$id_genero){
+        $sentencia  = $this->db -> prepare ( "UPDATE genero SET tipo=? WHERE id =?" );
+        $sentencia->execute ( array ($genero,$id_genero)); 
     }
 
 }
