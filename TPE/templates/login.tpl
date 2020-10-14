@@ -14,7 +14,6 @@
                     <button id="enviar" type="submit">Iniciar Sesion <i class="fas fa-user"></i></button>
                 </div>        
              </form>
-        </section>
-        
+        </section>        
     </article>
 {include file="footer.tpl"}

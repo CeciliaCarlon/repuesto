@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-{include file="botoneraUsuario.tpl"}
+{include file="botonera.tpl"}
 <div class="especificacionPelicula">
     <h2 class="tituloPelicula">{$pelicula->titulo}</h2>
     <h2>Argumento</h2>

@@ -53,7 +53,7 @@ class userController{
                     session_start();
                     $_SESSION["email"] = $usuarioDB->email;
 
-                    header("Location: ".BASE_URL."home");
+                    $this->view->showHomeLocation();
                 }
                 else{
                     $this->view->showError("La password ingresada es incorrecta. Por favor intente nuevamente", $logeado);
