@@ -7,7 +7,7 @@
             <input class="input_tipo" name="input_tipo" type="text" placeholder="Tipo">
         </div>
         <div>
-            <button type="submit" class="btn_agregar">Agregar</button>
+            <button type="submit" class="btn_agregar">Agregar</a></button>
         </div>
     </div>    
 </form>    

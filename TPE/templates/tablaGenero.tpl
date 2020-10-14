@@ -15,8 +15,8 @@
                 <tr>
                     <td>{$genero->tipo}</td>
                     {if $logeado}
-                    <td><button><a href="deleteGenero/{$genero->id}"><i class="fas fa-trash-alt"></i><button></td>
-                    <td><button><a href="formularioEditarGenero/{$genero->id}"><i class="far fa-edit"></i><button></td>
+                    <td><button><a href="deleteGenero/{$genero->id}"><i class="fas fa-trash-alt"></i></a><button></td>
+                    <td><button><a href="formularioEditarGenero/{$genero->id}"><i class="far fa-edit"></a></i><button></td>
                     {/if}
                 </tr>
             {/foreach}

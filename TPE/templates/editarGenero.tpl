@@ -8,7 +8,7 @@
                  value="{$datosGeneroPorEditar->tipo}" placeholder="Editar Genero">
             </div>
             <button type="submit">Editar</button>
-            <button><a href="{BASE_URL}tabla">Cancelar</button>
+            <button><a href="{BASE_URL}tabla">Cancelar</a></button>
      </div> 
 <form>   
 {include file="footer.tpl"}
