@@ -50,7 +50,6 @@ ul.botonera.show {
 
 .botonera li{
     font-size: 1.3rem;
-    list-style: none;
 }
 
 .boton{
@@ -176,7 +175,7 @@ h2.comentarios{
 .nombres_comentarios{
     font-size: 1.5rem;
     margin: 20px 0px 0px 0px;
-    color: black;
+    color: white;
     background-color: red;
 }
 
@@ -242,7 +241,36 @@ h4{
 
     .especificacionPelicula{
         border: solid rgb(43, 41, 41) 5px;
+        margin: 15px 250px;
         justify-content: center;
+        align-items: center;
     }
-    
+
+    .comentariosSoloPage{
+        border: solid rgb(43, 41, 41) 5px;
+        margin: 5px;
+        flex-grow: 2;
+    }
+
+    li{
+        list-style: none;
+    }
+
+    h4{
+        font-size: larger;
+    }
+
+    .contenedorComentarios{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .formularioComentarios{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 0px;
+        flex-grow: 1;
+    }
 }

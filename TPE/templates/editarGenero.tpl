@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 {include file="botonera.tpl"}
-<form action="editarGenero/{$datosGeneroPorEditar->id}" method="POST">
+<form action="editarGenero/{$datosGeneroPorEditar->id_genero}" method="POST">
     <div class="tabla_input">
         <label>Tipo</label>
             <div class="respuesta">

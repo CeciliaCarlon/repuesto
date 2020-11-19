@@ -25,16 +25,19 @@ class generoController{
         }
     }
 
-    function ShowTablaGenero (){
+    function ShowTablaGenero ($params=null){
         $logeado=$this->checkLoggedIn();
         $tipo=$this->model->GetGeneros();
         $this->view-> showTablaGenero($tipo, $logeado);
     }
 
-    function InsertarGenero(){
+    function InsertarGenero($params=null){
         $logeado=$this->checkLoggedIn();
         if(empty($_POST['input_tipo']) || !isset($_POST['input_tipo'])){
             $this->view->showError("No se pudo insertar el genero. Por favor complete todos los campos.", $logeado);
+        }
+        else if($logeado==null || $logeado==false){
+            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $tipo=$_POST['input_tipo'];
@@ -46,15 +49,24 @@ class generoController{
     }
     
     function  DeleteGenero($params=null) {
-        $id_genero= $params[':ID'];
-        $this->model ->DeleteGenero($id_genero);
-        $this->view->showTablaLocation(); 
+        $logeado=$this->checkLoggedIn();
+        if($logeado == null || $logeado==false){
+            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
+        }
+        else{
+            $id_genero= $params[':ID'];
+            $this->model ->DeleteGenero($id_genero);
+            $this->view->showTablaLocation(); 
+        }
     }
 
     function EditarGenero($params = null){
         $logeado=$this->checkLoggedIn();
         if(empty($_POST['editar_genero_input']) || !isset($_POST['editar_genero_input'])){
             $this->view->showError("No se pudo editar el genero. Por favor complete todos los campos.", $logeado);
+        }
+        else if($logeado==null || $logeado==false){
+            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $id_genero=$params[':ID'];
@@ -64,7 +76,7 @@ class generoController{
         }
     }
     
-    function MostrarFormularioInsertarGenero (){
+    function MostrarFormularioInsertarGenero ($params=null){
         $logeado=$this->checkLoggedIn();
         $genero=$this->model->GetGeneros();
         $this->view->showFormularioInsertarGenero($genero, $logeado);

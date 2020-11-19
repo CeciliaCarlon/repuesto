@@ -4,7 +4,7 @@
         <form action="filtrarPelicula" method="POST">
             <select name="select_genero">
                 {foreach from=$allGeneros item=genero};
-                <option value="{$genero->id}">{$genero->tipo}</option>
+                <option value="{$genero->id_genero}">{$genero->tipo}</option>
                 {/foreach}
             </select>
         <button type="submit">Filtrar</button>

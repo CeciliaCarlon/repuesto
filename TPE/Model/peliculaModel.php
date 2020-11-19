@@ -11,27 +11,27 @@ class peliculaModel{
     function getDatosPelicula(){
         $sentencia = $this->db->prepare( "SELECT * FROM pelicula");
         $sentencia->execute();
-        $tareas=$sentencia->fetchAll(PDO::FETCH_OBJ);
+        $peliculas=$sentencia->fetchAll(PDO::FETCH_OBJ);
 
-        return $tareas;
+        return $peliculas;
     }
 
     function getAllData(){
-        $sentencia = $this->db->prepare( "SELECT * FROM pelicula INNER JOIN genero ON pelicula.id_genero=genero.id" );
+        $sentencia = $this->db->prepare( "SELECT * FROM pelicula INNER JOIN genero ON pelicula.id_genero=genero.id_genero" );
         $sentencia->execute();
         $peliculaConGenero=$sentencia->fetchAll(PDO::FETCH_OBJ);
         return $peliculaConGenero;
     }
 
     function getPeliculaID($id_pelicula){
-        $sentencia = $this->db->prepare("SELECT * FROM pelicula INNER JOIN genero ON pelicula.id_genero=genero.id WHERE id_pelicula=?");
+        $sentencia = $this->db->prepare("SELECT * FROM pelicula INNER JOIN genero ON pelicula.id_genero=genero.id_genero WHERE id_pelicula=?");
         $sentencia->execute(array($id_pelicula));
         $pelicula=$sentencia->fetch(PDO::FETCH_OBJ);
         return $pelicula;
     }
 
     function getPeliculaPorGenero($id_genero){
-        $sentencia = $this->db->prepare("SELECT * FROM pelicula INNER JOIN genero ON pelicula.id_genero=genero.id WHERE id_genero=?");
+        $sentencia = $this->db->prepare("SELECT * FROM pelicula INNER JOIN genero ON pelicula.id_genero=genero.id_genero WHERE pelicula.id_genero=?");
         $sentencia->execute(array($id_genero));
         $peliculas=$sentencia->fetchAll(PDO::FETCH_OBJ);
         return $peliculas;

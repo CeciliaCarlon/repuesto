@@ -4,7 +4,7 @@
         <thead>
             <tr>
                 <th>Tipo</th>
-                {if $logeado}
+                {if $logeado eq true}
                 <th><i class="fas fa-trash-alt"></th>
                 <th><i class="far fa-edit"></th>
                 {/if}
@@ -14,9 +14,9 @@
             {foreach from=$allGeneros item=genero}
                 <tr>
                     <td>{$genero->tipo}</td>
-                    {if $logeado}
-                    <td><button><a href="deleteGenero/{$genero->id}"><i class="fas fa-trash-alt"></i></a><button></td>
-                    <td><button><a href="formularioEditarGenero/{$genero->id}"><i class="far fa-edit"></a></i><button></td>
+                    {if $logeado eq true}
+                    <td><button><a href="deleteGenero/{$genero->id_genero}"><i class="fas fa-trash-alt"></i></a><button></td>
+                    <td><button><a href="formularioEditarGenero/{$genero->id_genero}"><i class="far fa-edit"></a></i><button></td>
                     {/if}
                 </tr>
             {/foreach}

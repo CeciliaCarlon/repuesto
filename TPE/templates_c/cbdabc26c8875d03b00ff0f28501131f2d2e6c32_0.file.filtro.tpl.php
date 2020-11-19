@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-09 02:17:09
+/* Smarty version 3.1.34-dev-7, created on 2020-11-20 00:07:24
   from 'C:\xampp\htdocs\TPE\templates\filtro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f7fac057495e6_92529387',
+  'unifunc' => 'content_5fb6faac68e238_24570590',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'cbdabc26c8875d03b00ff0f28501131f2d2e6c32' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\filtro.tpl',
-      1 => 1602202626,
+      1 => 1605378264,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f7fac057495e6_92529387 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fb6faac68e238_24570590 (Smarty_Internal_Template $_smarty_tpl) {
 ?><aside>
     <div>
         <p>Filtrar por genero:</p>
@@ -32,7 +32,7 @@ $_smarty_tpl->tpl_vars['genero']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['genero']->value) {
 $_smarty_tpl->tpl_vars['genero']->do_else = false;
 ?>;
-                <option value="<?php echo $_smarty_tpl->tpl_vars['genero']->value->id;?>
+                <option value="<?php echo $_smarty_tpl->tpl_vars['genero']->value->id_genero;?>
 "><?php echo $_smarty_tpl->tpl_vars['genero']->value->tipo;?>
 </option>
                 <?php

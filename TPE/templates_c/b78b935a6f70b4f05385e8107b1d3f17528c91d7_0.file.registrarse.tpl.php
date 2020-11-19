@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-20 00:06:50
-  from 'C:\xampp\htdocs\TPE\templates\login.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-11-20 00:06:54
+  from 'C:\xampp\htdocs\TPE\templates\registrarse.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fb6fa8a6cf570_97367015',
+  'unifunc' => 'content_5fb6fa8e4286f4_59279165',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '70c00958dce23c48401e8593013a5a0ab4c6eb36' => 
+    'b78b935a6f70b4f05385e8107b1d3f17528c91d7' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\TPE\\templates\\login.tpl',
-      1 => 1605384190,
+      0 => 'C:\\xampp\\htdocs\\TPE\\templates\\registrarse.tpl',
+      1 => 1605384223,
       2 => 'file',
     ),
   ),
@@ -23,14 +23,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fb6fa8a6cf570_97367015 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fb6fa8e4286f4_59279165 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-    <article>
-        <h2>Iniciar Sesion</h2>
+<article>
+        <h2>Registrarse</h2>
         <section class="formulario">
-            <form action="verificarUser" method="POST" id="formulario">
+            <form action="registrarUser" method="POST" id="formulario">
                 <div class="formulario_contenido">
                     <input type="text" id="mail" name="input_email" placeholder="Mail"/>
                 </div>
@@ -38,13 +38,11 @@ $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_
                     <input type="password" id="contraseña" name="input_contraseña" placeholder="Contraseña"/>
                 </div>
                 <div class="formulario_contenido">
-                    <button id="enviar" type="submit">Iniciar Sesion <i class="fas fa-user"></i></button>
-                </div>   
+                    <input type="password" id="contraseña" name="input_confirmacion_contraseña" placeholder="Confirmar Contraseña"/>
+                </div>
                 <div class="formulario_contenido">
-                    <p>¿No estas registrado?</p>
-                    <p><a href="<?php echo BASE_URL;?>
-formularioRegistrarse">Registrarse</a></p>
-                </div>     
+                    <button id="enviar" type="submit">Registrarse</button>
+                </div>       
              </form>
         </section>        
     </article>

@@ -16,7 +16,7 @@ class generoModel{
     }
 
     function getGeneroID($id_generos){
-        $sentencia = $this->db->prepare("SELECT * FROM genero WHERE id=?");
+        $sentencia = $this->db->prepare("SELECT * FROM genero WHERE id_genero=?");
         $sentencia->execute(array($id_generos));
         $generos=$sentencia->fetch(PDO::FETCH_OBJ);
         return $generos;
@@ -28,12 +28,12 @@ class generoModel{
     }
 
     function  DeleteGenero($generos_id) {
-        $sentencia  = $this->db->prepare("DELETE FROM genero WHERE id=?");
+        $sentencia  = $this->db->prepare("DELETE FROM genero WHERE id_genero=?");
         $sentencia -> execute  (array($generos_id));
     }
 
     function UpdateGenero($genero,$id_genero){
-        $sentencia  = $this->db -> prepare ( "UPDATE genero SET tipo=? WHERE id =?" );
+        $sentencia  = $this->db -> prepare ( "UPDATE genero SET tipo=? WHERE id_genero =?" );
         $sentencia->execute ( array ($genero,$id_genero)); 
     }
 

@@ -22,7 +22,7 @@
             <div class="respuesta">
                 <select name="editar_genero_select">';
                     {foreach from=$generos item=genero}
-                        <option value="{$genero->id}">{$genero->tipo}</option>
+                        <option value="{$genero->id_genero}">{$genero->tipo}</option>
                     {/foreach}
                 </select>
             </div>

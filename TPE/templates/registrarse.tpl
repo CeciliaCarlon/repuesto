@@ -1,9 +1,9 @@
 {include file="header.tpl"}
 {include file="botonera.tpl"}
-    <article>
-        <h2>Iniciar Sesion</h2>
+<article>
+        <h2>Registrarse</h2>
         <section class="formulario">
-            <form action="verificarUser" method="POST" id="formulario">
+            <form action="registrarUser" method="POST" id="formulario">
                 <div class="formulario_contenido">
                     <input type="text" id="mail" name="input_email" placeholder="Mail"/>
                 </div>
@@ -11,12 +11,11 @@
                     <input type="password" id="contraseña" name="input_contraseña" placeholder="Contraseña"/>
                 </div>
                 <div class="formulario_contenido">
-                    <button id="enviar" type="submit">Iniciar Sesion <i class="fas fa-user"></i></button>
-                </div>   
+                    <input type="password" id="contraseña" name="input_confirmacion_contraseña" placeholder="Confirmar Contraseña"/>
+                </div>
                 <div class="formulario_contenido">
-                    <p>¿No estas registrado?</p>
-                    <p><a href="{BASE_URL}formularioRegistrarse">Registrarse</a></p>
-                </div>     
+                    <button id="enviar" type="submit">Registrarse</button>
+                </div>       
              </form>
         </section>        
     </article>

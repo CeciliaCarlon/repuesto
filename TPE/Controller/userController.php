@@ -18,48 +18,103 @@ class userController{
     private function checkLoggedIn(){
         session_start();
         if(!isset($_SESSION['email'])){
-            return false;
+            return null;
         }
         else{
-            return true;
+            return $_SESSION['administrador'];
         }
     }
 
-    function Login(){
+    function Login($params=null){
         $logeado=$this->checkLoggedIn();
         $this->view->showLogin($logeado);
     }
 
-    function Logout(){
+    function Logout($params=null){
         session_start();
         session_destroy();
         $logeado=$this->checkLoggedIn();
         $this->view->showHomeLocation($logeado);
     }
 
-    function VerificarUsuario(){
+    function MostrarFormularioRegistrarse($params=null){
         $logeado=$this->checkLoggedIn();
-        if (empty($_POST['input_email_login']) || !isset($_POST['input_email_login']) || 
-        empty($_POST['input_contraseña_login']) || !isset($_POST['input_contraseña_login'])){
+        $this->view->showFormularioRegistrarse($logeado);
+    }
+
+    function TablaUsuarios($params=null){
+        $logeado=$this->checkLoggedIn();
+        //$admin=$this->checkAdmin();
+        $usuarios=$this->model->getUsuarios();
+        $this->view->showTablaUsuario($usuarios, $logeado);
+    }
+
+    function DeleteUsuario($params=null){
+        $idUsuario=$params[':ID'];
+        $this->model->borrarUsuario($idUsuario);
+        $this->view->showTablaUsuarioLocation();
+    }
+
+    function EstablecerComoAdmin($params=null){
+        $idUsuario=$params[':ID'];
+        $admin=true;
+        $this->model->setAdmin($admin,$idUsuario);
+        $this->view->showTablaUsuarioLocation();
+    }
+
+    function QuitarComoAdmin($params=null){
+        $idUsuario= $params[':ID'];
+        $admin=false;
+        $this->model->setAdmin($admin,$idUsuario);
+        $this->view->showTablaUsuarioLocation();
+    }
+
+    function Registrar($params=null){
+        $email=$_POST['input_email'];
+        $password=$_POST['input_contraseña'];
+        $confirmacionPassword= $_POST['input_confirmacion_contraseña'];
+        $admin= 0;//chequear que no exista el email.
+        if (empty($email) || !isset($email) || empty($password) || !isset($password) 
+        || empty($confirmacionPassword) || !isset($confirmacionPassword)){
+            $logeado=$this->checkLoggedIn();
+            $this->view->showError("No se pudo resgistrar. Por favor complete todos los campos.", $logeado);
+        }
+        else{
+            if($password!=$confirmacionPassword){
+                $logeado=$this->checkLoggedIn();
+                $this->view->showError("No se pudo resgistrar. La contraseña es diferente.", $logeado);
+            }
+            else{
+                $passwordEncriptada= password_hash($password, PASSWORD_DEFAULT);
+                $this->model->crearUsuario($email, $passwordEncriptada, $admin);
+                $this->VerificarUsuario(null);
+            }
+        }
+    }
+
+    function VerificarUsuario($params=null){
+        $email=$_POST['input_email'];
+        $password=$_POST['input_contraseña'];
+        if (empty($email) || !isset($email) || empty($password) || !isset($password)){
+            $logeado=$this->checkLoggedIn();
             $this->view->showError("No se pudo iniciar sesion. Por favor complete todos los campos.", $logeado);
         }
         else{
-            $email=$_POST['input_email_login'];
-            $password=$_POST['input_contraseña_login'];
             $usuarioDB=$this->model->getUsuario($email);
-
             if(isset($usuarioDB) && $usuarioDB){
                 if(password_verify($password, $usuarioDB->password)){
                     session_start();
                     $_SESSION["email"] = $usuarioDB->email;
-
+                    $_SESSION["administrador"]= $usuarioDB->administrador;
                     $this->view->showHomeLocation();
                 }
                 else{
+                    $logeado=$this->checkLoggedIn();
                     $this->view->showError("La password ingresada es incorrecta. Por favor intente nuevamente", $logeado);
                 }
             }
             else{
+                $logeado=$this->checkLoggedIn();
                 $this->view->showError("El email ingresado no esta registrado. Por favor intente nuevamente", $logeado);
             }
         }
