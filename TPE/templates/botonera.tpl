@@ -6,7 +6,9 @@
             <li><a class="boton" href="home">Inicio</a></li>
             <li><a class="boton" href="tabla">Tabla</a></li>
             {if $logeado neq null}
-            <li><a class="boton" href="usuarios">Usuarios</a></li>
+                {if $logeado->administrador}
+                <li><a class="boton" href="usuarios">Usuarios</a></li>
+                {/if}
             <li><a class="boton" href="logout">Cerrar Sesion</a></li>
             {else}
             <li><a class="boton" href="login">Iniciar Sesion</a></li>

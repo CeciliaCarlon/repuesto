@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', ()=>{
 
-    getAllComentarios();
+    getComentariosPorPelicula();
 
     document.querySelector("#insertarComentario").addEventListener("submit", e=>{
         e.preventDefault();
@@ -10,11 +10,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
     })
 })
 
-const urlComentarios= 'api/comentarios';
-const urlPuntuacion= 'api/puntuacion';
+const url= 'api/comentarios';
 
 function getAllComentarios(){
-    fetch (urlComentarios)
+    fetch (url)
     .then (response=>{
         if (!response.ok){
             console.log("Error");
@@ -30,48 +29,71 @@ function getAllComentarios(){
     }) 
 }
 
-function insertComentario(){
-
-    let idSelect= document.querySelector("#selectPuntuacion").value;
-
-    let puntuacionElegida= fetch(urlPuntuacion+"/"+idSelect)
+function getComentariosPorPelicula(){
+    let idPelicula=document.querySelector("#idPelicula").value;
+    fetch (url+'/'+idPelicula)
     .then (response=>{
-        if (!response.ok){
-            console.log("Error");
-        }
         return response.json();
     })
-    .then(puntuacion=>{
-        return puntuacion;
+    .then(comentarios=>{  
+        showComentario(comentarios);
     })
     .catch(error=>{
         console.log(error);
     }) 
+}
 
+function insertComentario(){
     const comentario ={
-        texto: document.querySelector('input[name="input_comentario"]').value,
-        puntuacion: puntuacionElegida,
-        id_pelicula: "1",//document.querySelector().value,
-        id_usuario: "3",//document.querySelector().value,
+        texto: document.querySelector("#comentario").value,
+        puntuacion: document.querySelector("#selectPuntuacion").value,
+        id_pelicula: document.querySelector("#idPelicula").value,
+        id_usuario: document.querySelector("#idUsuario").value,
     }
 
-    fetch(urlComentarios, {
+    fetch(url, {
         method:'POST',
         headers: {'Content-Type': 'application/json'},       
         body: JSON.stringify(comentario),
     })
     .then(response=>{
-        getAllComentarios();
+        getComentariosPorPelicula();
     })
     .catch(error=>console.log(error));
 
 }
 
+function deleteComentario(){
+    let idComentario= document.querySelector("#idComentario").value;
+    fetch(url+'/'+idComentario, {
+        method:'DELETE',
+    })
+    .then(response=>{
+        if (!response.ok){
+            console.log("Error");
+        }
+        return response.json();
+    })
+    .then(comentarios=>{
+        getComentariosPorPelicula();
+    })
+    .catch(error=>{
+        console.log(error);
+    })
+}
+
 function showComentario(comentarios){
     const ul= document.querySelector('#ulComentarios');
     ul.innerHTML="";
-    for(let comentario of comentarios){
-        ul.innerHTML+=`<li>${comentario.texto}</li>`;
+    if(comentarios!=null){
+        for(let comentario of comentarios){
+            console.log(comentario);
+            ul.innerHTML+=`<li>${comentario.texto}</li><button id="botonEliminarComentario">Eliminar</button><input type="hidden" id="idComentario" value="${comentario.id_comentario}"></input>`;
+        }
     }
+    document.querySelector("#botonEliminarComentario").addEventListener("click", f=>{
+        f.preventDefault();
+        deleteComentario();
+    })
 }
 

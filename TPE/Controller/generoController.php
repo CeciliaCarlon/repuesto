@@ -7,36 +7,27 @@ class generoController{
 
     private $view;
     private $model;
+    private $contollerUser;
 
     function __construct(){
 
         $this->view = new generoView();
         $this->model= new generoModel();
-
-    }
-
-    private function checkLoggedIn(){
-        session_start();
-        if(!isset($_SESSION['email'])){
-            return false;
-        }
-        else{
-            return true;
-        }
+        $this->controllerUser= new userController();
     }
 
     function ShowTablaGenero ($params=null){
-        $logeado=$this->checkLoggedIn();
+        $logeado=$this->controllerUser->checkLoggedIn();
         $tipo=$this->model->GetGeneros();
         $this->view-> showTablaGenero($tipo, $logeado);
     }
 
     function InsertarGenero($params=null){
-        $logeado=$this->checkLoggedIn();
+        $logeado=$this->controllerUser->checkLoggedIn();
         if(empty($_POST['input_tipo']) || !isset($_POST['input_tipo'])){
             $this->view->showError("No se pudo insertar el genero. Por favor complete todos los campos.", $logeado);
         }
-        else if($logeado==null || $logeado==false){
+        else if($logeado==null || $logeado->administrador==false){
             $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
@@ -44,13 +35,11 @@ class generoController{
             $this->model->insertarGenero($tipo);
             $this->view->showTablaLocation();
         }
-
-
     }
     
     function  DeleteGenero($params=null) {
-        $logeado=$this->checkLoggedIn();
-        if($logeado == null || $logeado==false){
+        $logeado=$this->controllerUser->checkLoggedIn();
+        if($logeado == null || $logeado->administrador==false){
             $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
@@ -61,11 +50,11 @@ class generoController{
     }
 
     function EditarGenero($params = null){
-        $logeado=$this->checkLoggedIn();
+        $logeado=$this->controllerUser->checkLoggedIn();
         if(empty($_POST['editar_genero_input']) || !isset($_POST['editar_genero_input'])){
             $this->view->showError("No se pudo editar el genero. Por favor complete todos los campos.", $logeado);
         }
-        else if($logeado==null || $logeado==false){
+        else if($logeado==null || $logeado->administrador==false){
             $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
@@ -77,13 +66,13 @@ class generoController{
     }
     
     function MostrarFormularioInsertarGenero ($params=null){
-        $logeado=$this->checkLoggedIn();
+        $logeado=$this->controllerUser->checkLoggedIn();
         $genero=$this->model->GetGeneros();
         $this->view->showFormularioInsertarGenero($genero, $logeado);
     }
 
     function MostrarFormularioEditarGenero($params=null){
-        $logeado=$this->checkLoggedIn();
+        $logeado=$this->controllerUser->checkLoggedIn();
         $id_genero=$params[':ID'];
         $datosGeneroPorEditar=$this->model->getGeneroID($id_genero);
         $genero=$this->model->GetGeneros();

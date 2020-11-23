@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-20 00:07:24
+/* Smarty version 3.1.34-dev-7, created on 2020-11-23 17:30:58
   from 'C:\xampp\htdocs\TPE\templates\tablaGenero.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fb6faac6375a0_48304346',
+  'unifunc' => 'content_5fbbe3c2c63fa8_94358546',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1e8af3e983706945c48a9f69aa50cf0fdaf123d8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\tablaGenero.tpl',
-      1 => 1605457088,
+      1 => 1606149038,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5fb6faac6375a0_48304346 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fbbe3c2c63fa8_94358546 (Smarty_Internal_Template $_smarty_tpl) {
 ?><h2>Generos</h2>
 <section>
     <table class="tabla">
         <thead>
             <tr>
                 <th>Tipo</th>
-                <?php if ($_smarty_tpl->tpl_vars['logeado']->value == true) {?>
+                <?php if ($_smarty_tpl->tpl_vars['logeado']->value != null && $_smarty_tpl->tpl_vars['logeado']->value->administrador) {?>
                 <th><i class="fas fa-trash-alt"></th>
                 <th><i class="far fa-edit"></th>
                 <?php }?>
@@ -43,7 +43,7 @@ $_smarty_tpl->tpl_vars['genero']->do_else = false;
                 <tr>
                     <td><?php echo $_smarty_tpl->tpl_vars['genero']->value->tipo;?>
 </td>
-                    <?php if ($_smarty_tpl->tpl_vars['logeado']->value == true) {?>
+                    <?php if ($_smarty_tpl->tpl_vars['logeado']->value != null && $_smarty_tpl->tpl_vars['logeado']->value->administrador) {?>
                     <td><button><a href="deleteGenero/<?php echo $_smarty_tpl->tpl_vars['genero']->value->id_genero;?>
 "><i class="fas fa-trash-alt"></i></a><button></td>
                     <td><button><a href="formularioEditarGenero/<?php echo $_smarty_tpl->tpl_vars['genero']->value->id_genero;?>

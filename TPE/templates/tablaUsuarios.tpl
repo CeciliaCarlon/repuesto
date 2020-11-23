@@ -24,7 +24,7 @@
                                 {else}
                                 <td>Administrador</td>
                                 {/if}
-                                {if $logeado eq true}
+                                {if $logeado->administrador}
                                 <td><button><a href="deleteUsuario/{$usuario->id_usuario}"><i class="fas fa-trash-alt"></i></a><button></td>
                                     {if $usuario->administrador eq false}
                                     <td><button><a href="establecerAdmin/{$usuario->id_usuario}"><i class="fas fa-user-cog"></i></a><button></td>

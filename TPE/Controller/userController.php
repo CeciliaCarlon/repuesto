@@ -15,13 +15,13 @@ class userController{
 
     }
 
-    private function checkLoggedIn(){
+    function checkLoggedIn(){
         session_start();
         if(!isset($_SESSION['email'])){
             return null;
         }
         else{
-            return $_SESSION['administrador'];
+            return $this->model->getUsuario($_SESSION['email']);
         }
     }
 
@@ -44,7 +44,6 @@ class userController{
 
     function TablaUsuarios($params=null){
         $logeado=$this->checkLoggedIn();
-        //$admin=$this->checkAdmin();
         $usuarios=$this->model->getUsuarios();
         $this->view->showTablaUsuario($usuarios, $logeado);
     }

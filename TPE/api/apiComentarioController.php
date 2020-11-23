@@ -15,8 +15,13 @@ class apiComentarioController extends apiController{
         if($comentarios){
             $this->view->response($comentarios, 200);
         }
-        else{
-            $this->view->response("Comentarios not found", 404);
+    }
+
+    function getComentariosPorPelicula($params=null){
+        $idPelicula=$params[':ID'];
+        $comentarios= $this->model->getComentarioPorPeli($idPelicula);
+        if($comentarios){
+            $this->view->response($comentarios, 200);
         }
     }
 
@@ -46,15 +51,15 @@ class apiComentarioController extends apiController{
     function insertComentario($params=null){
         $body= $this->getData();
         $texto= $body->texto;
-        $puntuacion= $body->id_puntuacion;
+        $puntuacion= $body->puntuacion;
         $idPelicula= $body->id_pelicula;
         $idUsuario= $body->id_usuario;
-        $idEditado= $this->model->insertComentario($texto, $puntuacion, $idPelicula, $idUsuario);
-        if($idEditado){
-            $this->view->response("Comentario id=$idEditado insertado correctamente", 201);
+        $idInsertado= $this->model->insertComentario($texto, $puntuacion, $idPelicula, $idUsuario);
+        if($idInsertado){
+            $this->view->response("Comentario id=$idInsertado insertado correctamente", 201);
         }
         else{
-            $this->view->response("Comentario id=$id not found.", 404);
+            $this->view->response("Comentario no insertado.", 404);
         }
     }
 
@@ -63,7 +68,7 @@ class apiComentarioController extends apiController{
         $comentario= $this->model->getComentario($id);
         if($comentario){
             $body= $this->getData();
-            if(empty($body->texto) || !isset($body->texto) || empty($body->id_puntuacion) || !isset($body->id_puntuacion) 
+            if(empty($body->texto) || !isset($body->texto) || empty($body->puntuacion) || !isset($body->puntuacion) 
             || empty($body->id_pelicula) || !isset($body->id_pelicula) || empty($body->id_usuario) || !isset($body->id_usuario)){
                 $this->view->response("JSON incorrecto", 404);
             }

@@ -13,7 +13,7 @@
                             <th>Estreno</th>
                             <th>Genero</th>
                             <th><i class="fas fa-plus-circle"></i></th>
-                            {if $logeado eq true}
+                            {if $logeado neq null && $logeado->administrador}
                             <th><i  class="fas fa-trash-alt"></i></th>
                             <th><i class="far fa-edit"></i></th>
                             {/if}
@@ -28,7 +28,7 @@
                                 <td>{$pelicula->estreno}</td>
                                 <td>{$pelicula->tipo}</td>
                                 <td><button><a href="verMasPelicula/{$pelicula->id_pelicula}"><i class="fas fa-plus-circle"></i></a><button></td>
-                                {if $logeado eq true}
+                                {if $logeado neq null && $logeado->administrador}
                                 <td><button><a href="deletePelicula/{$pelicula->id_pelicula}"><i class="fas fa-trash-alt"></i></a><button></td>
                                 <td><button><a href="formularioEditarPelicula/{$pelicula->id_pelicula}"><i class="far fa-edit"></i></a><button></td>
                                 {/if}
@@ -41,7 +41,7 @@
         </article>
         <aside>
             {include file="filtro.tpl"}
-            {if $logeado}
+            {if $logeado neq null && $logeado->administrador}
             <form action="formularioInsertarPelicula" method="GET">
                 <button >Insertar Pelicula <i class="fas fa-plus"></i></button>
             </form>

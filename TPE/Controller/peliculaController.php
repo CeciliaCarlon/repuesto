@@ -9,45 +9,36 @@ class peliculaController{
     private $view;
     private $model;
     private $modelGenero;
+    private $contollerUser;
 
     function __construct(){
 
         $this->view = new peliculaView();
         $this->model = new peliculaModel();
         $this->modelGenero = new generoModel();
-
-    }
-
-    private function checkLoggedIn(){
-        session_start();
-        if(!isset($_SESSION['email'])){
-            return null;
-        }
-        else{
-            return $_SESSION['administrador'];
-        }
+        $this->controllerUser= new userController();
     }
 
     function Home($params=null){
-        $logeado=$this->checkLoggedIn();
+        $logeado=$this->controllerUser->checkLoggedIn();
         $this->view->showHome($logeado);
     }
 
     function TablaPeliculas($params=null){
-        $logeado=$this->checkLoggedIn();
+        $logeado=$this->controllerUser->checkLoggedIn();
         $pelicula=$this->model->getAllData();
         $genero=$this->modelGenero->GetGeneros();
         $this->view->showTabla($pelicula, $genero, $genero, $logeado);
     }
 
     function InsertarPelicula($params=null){
-        $logeado=$this->checkLoggedIn();
+        $logeado=$this->controllerUser->checkLoggedIn();
         if(empty($_POST['input_titulo']) || !isset($_POST['input_titulo']) || empty($_POST['input_descripcion']) || 
         !isset($_POST['input_descripcion']) || empty($_POST['input_director']) || !isset($_POST['input_director']) || 
         empty($_POST['input_estreno']) || !isset($_POST['input_estreno']) || empty($_POST['select_genero']) || !isset($_POST['select_genero'])){
             $this->view->showError("No se pudo insertar la pelicula. Por favor complete todos los campos.", $logeado);
         }
-        else if($logeado==null || $logeado==false){
+        else if($logeado==null || $logeado->administrador==false){
             $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
@@ -63,13 +54,13 @@ class peliculaController{
     }
 
     function MostrarFormularioInsertarPelicula($params=null){
-        $logeado=$this->checkLoggedIn();
+        $logeado=$this->controllerUser->checkLoggedIn();
         $genero=$this->modelGenero->GetGeneros();
         $this->view->showFormularioInsertarPelicula($genero, $logeado);
     }
 
     function MostrarFormularioEditarPelicula($params=null){
-        $logeado=$this->checkLoggedIn();
+        $logeado=$this->controllerUser->checkLoggedIn();
         $idPelicula=$params[':ID'];
         $datosPeliculaPorEditar=$this->model->getPeliculaID($idPelicula);
         $genero=$this->modelGenero->GetGeneros();
@@ -77,14 +68,14 @@ class peliculaController{
     }
 
     function EditarPelicula($params=null){
-        $logeado=$this->checkLoggedIn();
+        $logeado=$this->controllerUser->checkLoggedIn();
         if(empty($_POST['editar_titulo_input']) || !isset($_POST['editar_titulo_input']) || empty($_POST['editar_descripcion_input']) || 
         !isset($_POST['editar_descripcion_input']) || empty($_POST['editar_director_input']) || !isset($_POST['editar_director_input']) || 
         empty($_POST['editar_estreno_input']) || !isset($_POST['editar_estreno_input']) || empty($_POST['editar_genero_select']) || 
         !isset($_POST['editar_genero_select'])){
             $this->view->showError("No se pudo editar la pelicula. Por favor complete todos los campos.", $logeado);
         }
-        else if ($logeado==null || $logeado==false){
+        else if ($logeado==null || $logeado->administrador==false){
             $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
@@ -100,8 +91,8 @@ class peliculaController{
     }
 
     function DeletePelicula($params=null){
-        $logeado=$this->checkLoggedIn();
-        if($logeado==null || $logeado==false){
+        $logeado=$this->controllerUser->checkLoggedIn();
+        if($logeado==null || $logeado->administrador==false){
             $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
@@ -112,7 +103,7 @@ class peliculaController{
     }
 
     function FiltrarPelicula($params=null){
-        $logeado=$this->checkLoggedIn();
+        $logeado=$this->controllerUser->checkLoggedIn();
         if(empty($_POST['select_genero']) || !isset($_POST['select_genero'])){
             $this->view->showError("No se pudo filtrar la pelicula. Por favor intentelo nuevamente.", $logeado);
         }
@@ -126,7 +117,7 @@ class peliculaController{
     }
 
     function MostrarMasInformacionPelicula($params=null){
-        $logeado=$this->checkLoggedIn();
+        $logeado=$this->controllerUser->checkLoggedIn();
         $idPelicula=$params[':ID'];
         $datosPelicula=$this->model->getPeliculaID($idPelicula);
         $this->view->showMasPelicula($datosPelicula, $logeado);

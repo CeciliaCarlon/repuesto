@@ -14,6 +14,12 @@ class comentarioModel{
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
+    function getComentarioPorPeli($idPeli){
+        $sentencia= $this->db->prepare('SELECT * FROM comentario WHERE id_pelicula=?');
+        $sentencia->execute(array($idPeli));
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
+    }
+
     function getComentario($id){
         $sentencia= $this->db->prepare('SELECT * FROM comentario WHERE id_comentario=?');
         $sentencia->execute(array($id));
@@ -26,13 +32,13 @@ class comentarioModel{
     }
     
     function insertComentario($texto, $puntuacion, $idPeli, $idUsuario){
-        $sentencia=$this->db->prepare("INSERT INTO comentario(texto, id_puntuacion, id_pelicula, id_usuario) VALUES (?,?,?,?)");
+        $sentencia=$this->db->prepare("INSERT INTO comentario(texto, puntuacion, id_pelicula, id_usuario) VALUES (?,?,?,?)");
         $sentencia->execute(array($texto, $puntuacion, $idPeli, $idUsuario));
         return $this->db->lastInsertId();
     }
 
     function updateComentario($id, $texto, $puntuacion, $idPeli, $idUsuario){
-        $sentencia=$this->db->prepare("UPDATE comentario SET texto=?, id_puntuacion=?, id_pelicula=?, id_usuario=? WHERE id_comentario=?");
+        $sentencia=$this->db->prepare("UPDATE comentario SET texto=?, puntuacion=?, id_pelicula=?, id_usuario=? WHERE id_comentario=?");
         $sentencia->execute(array($texto, $puntuacion, $idPeli, $idUsuario, $id));
         return $this->db->lastInsertId();
     }
