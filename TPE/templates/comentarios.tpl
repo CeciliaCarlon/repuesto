@@ -26,9 +26,7 @@
 {/if}
 <div class="comentariosSoloPage">
     <h2 class="comentarios">Comentarios</h2>
-    <ul id="ulComentarios">
-
-    </ul>
+    {include file="vue/comentarios.vue"}
 </div>
 </div>
 <script src="js/comentarios.js"></script>

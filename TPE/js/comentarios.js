@@ -10,6 +10,14 @@ document.addEventListener('DOMContentLoaded', ()=>{
     })
 })
 
+let app = new Vue({
+    el: '#vue-comentarios',
+    data: {
+        comentarios: []  
+    }
+});
+
+
 const url= 'api/comentarios';
 
 function getAllComentarios(){
@@ -32,15 +40,10 @@ function getAllComentarios(){
 function getComentariosPorPelicula(){
     let idPelicula=document.querySelector("#idPelicula").value;
     fetch (url+'/'+idPelicula)
-    .then (response=>{
-        return response.json();
-    })
-    .then(comentarios=>{  
-        showComentario(comentarios);
-    })
-    .catch(error=>{
-        console.log(error);
-    }) 
+    .then(response => response.json())
+    .then(comentarios => app.comentarios = comentarios)
+    .catch(error => console.log(error));
+
 }
 
 function insertComentario(){
@@ -56,12 +59,17 @@ function insertComentario(){
         headers: {'Content-Type': 'application/json'},       
         body: JSON.stringify(comentario),
     })
-    .then(response=>{
-        getComentariosPorPelicula();
-    })
-    .catch(error=>console.log(error));
+    .then(response => response.json())
+    .then(comentario => app.comentarios.push(comentario))
+    .catch(error => console.log(error));
+
 
 }
+
+document.querySelector("#botonEliminarComentario").addEventListener("click", f=>{
+    f.preventDefault();
+    deleteComentario();
+})
 
 function deleteComentario(){
     let idComentario= document.querySelector("#idComentario").value;
@@ -88,12 +96,9 @@ function showComentario(comentarios){
     if(comentarios!=null){
         for(let comentario of comentarios){
             console.log(comentario);
-            ul.innerHTML+=`<li>${comentario.texto}</li><button id="botonEliminarComentario">Eliminar</button><input type="hidden" id="idComentario" value="${comentario.id_comentario}"></input>`;
+            ul.innerHTML+=`<li>${comentario.texto}</li><button>Eliminar</button><input type="hidden" id="idComentario" value="${comentario.id_comentario}"></input>`;
         }
     }
-    document.querySelector("#botonEliminarComentario").addEventListener("click", f=>{
-        f.preventDefault();
-        deleteComentario();
-    })
+    
 }
 
