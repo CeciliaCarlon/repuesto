@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', ()=>{
 
     getComentariosPorPelicula();
+    console.log(document.querySelector("#botonEliminarComentario"));
 
     document.querySelector("#insertarComentario").addEventListener("submit", e=>{
         e.preventDefault();
@@ -14,9 +15,27 @@ let app = new Vue({
     el: '#vue-comentarios',
     data: {
         comentarios: []  
+    },
+    method: {
+        deleteComentario(idComentario, com, key){
+            fetch(url+'/'+idComentario, {
+                method:'DELETE',
+            })
+            .then(response=>{
+                if (!response.ok){
+                    console.log("Error");
+                }
+                return response.json();
+            })
+            .then(comentarios=>{
+                getComentariosPorPelicula();
+            })
+            .catch(error=>{
+                console.log(error);
+            })
+        }
     }
 });
-
 
 const url= 'api/comentarios';
 
@@ -60,45 +79,11 @@ function insertComentario(){
         body: JSON.stringify(comentario),
     })
     .then(response => response.json())
-    .then(comentario => app.comentarios.push(comentario))
-    .catch(error => console.log(error));
-
-
-}
-
-document.querySelector("#botonEliminarComentario").addEventListener("click", f=>{
-    f.preventDefault();
-    deleteComentario();
-})
-
-function deleteComentario(){
-    let idComentario= document.querySelector("#idComentario").value;
-    fetch(url+'/'+idComentario, {
-        method:'DELETE',
-    })
-    .then(response=>{
-        if (!response.ok){
-            console.log("Error");
-        }
-        return response.json();
-    })
-    .then(comentarios=>{
+    .then(comentario => {
+        app.comentarios.push(comentario); 
         getComentariosPorPelicula();
     })
-    .catch(error=>{
-        console.log(error);
-    })
+    .catch(error => console.log(error));
 }
 
-function showComentario(comentarios){
-    const ul= document.querySelector('#ulComentarios');
-    ul.innerHTML="";
-    if(comentarios!=null){
-        for(let comentario of comentarios){
-            console.log(comentario);
-            ul.innerHTML+=`<li>${comentario.texto}</li><button>Eliminar</button><input type="hidden" id="idComentario" value="${comentario.id_comentario}"></input>`;
-        }
-    }
-    
-}
 

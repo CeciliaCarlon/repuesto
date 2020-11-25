@@ -1,11 +1,13 @@
 {literal}
 <div id="vue-comentarios">
     <ul id="ulComentarios">
-        <li v-for="comentario in comentarios" id="">
+        <li v-for="(comentario, key) in comentarios" id="">
             {{comentario.texto}} ({{comentario.puntuacion}})
             <input type="hidden" id="idComentario" :value="comentario.id_comentario">
-            <button id="botonEliminarComentario">Eliminar</button>
+{/literal}
+        {if $logeado->administrador}
+        <button id="botonEliminarComentario" @click="deleteComentario(comentario.id_comentario, comentarios, key)">Eliminar</button>
+        {/if}
         </li>
     </ul>
 </div>
-{/literal}
