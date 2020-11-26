@@ -7,7 +7,8 @@
 
     //rutas comentarios
     $router->addRoute("comentarios", "GET", "apiComentarioController", "getComentarios");
-    $router->addRoute("comentarios/:ID", "GET", "apiComentarioController", "getComentariosPorPelicula");
+    $router->addRoute("comentarios/:ID", "GET", "apiComentarioController", "getComentario");
+    $router->addRoute("peliculas/:ID/comentarios", "GET", "apiComentarioController", "getComentariosPorPelicula");
     $router->addRoute("comentarios/:ID", "DELETE", "apiComentarioController", "deleteComentario");
     $router->addRoute("comentarios", "POST", "apiComentarioController", "insertComentario");
     $router->addRoute("comentarios/:ID", "PUT", "apiComentarioController", "editComentario");

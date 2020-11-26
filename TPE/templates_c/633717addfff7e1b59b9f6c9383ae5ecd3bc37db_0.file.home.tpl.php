@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-20 00:07:18
+/* Smarty version 3.1.34-dev-7, created on 2020-11-25 23:52:44
   from 'C:\xampp\htdocs\TPE\templates\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fb6faa63957d6_21180585',
+  'unifunc' => 'content_5fbee03c1d2cf3_26641216',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '633717addfff7e1b59b9f6c9383ae5ecd3bc37db' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\home.tpl',
-      1 => 1604607262,
+      1 => 1606327284,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fb6faa63957d6_21180585 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fbee03c1d2cf3_26641216 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -45,23 +45,19 @@ $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_
         <aside>
             <h2 class="comentarios">Comentarios</h2>
             <div>
-             <p class="nombres_comentarios">Marcela</p> 
-             <p>Exelentes películas. En esta página pude encontrar todas
+             <p class="p-3 mb-2 bg-danger text-white"><label class="font-weight-bold">Marcela:</label> Exelentes películas. En esta página pude encontrar todas
               mis películas favoritas y los últimos estrenos.</p> 
             </div> 
             <div>
-             <p class="nombres_comentarios">Fabricio</p>
-             <p>Es fácil ingresar y la interfaz tiene una estetica increible.
+             <p class="p-3 mb-2 bg-danger text-white"><label class="font-weight-bold">Fabricio:</label> Es fácil ingresar y la interfaz tiene una estetica increible.
               Me encanta como está todo organizado.</p>
             </div>
             <div>
-             <p class="nombres_comentarios">Francisco</p>
-             <p>Muy buena calidad las películas.</p>
+             <p class="p-3 mb-2 bg-danger text-white"><label class="font-weight-bold">Francisco:</label> Muy buena calidad las películas.</p>
             </div> 
             <div>
-             <p class="nombres_comentarios">Lucrecia</p> 
-             <p>Muy recomendable esta página. Se la mostré a todes mis amigues y
-               les encanta. No puedo parar de ver películas.</p>
+             <p class="p-3 mb-2 bg-danger text-white"><label class="font-weight-bold">Lucrecia:</label> Muy recomendable esta página. Se la mostré a todes mis amigues y
+               les encanta. No puedo parar de ver películas.</p> 
             </div>
         </aside>
     </div>

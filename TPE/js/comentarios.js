@@ -3,7 +3,6 @@
 document.addEventListener('DOMContentLoaded', ()=>{
 
     getComentariosPorPelicula();
-    console.log(document.querySelector("#botonEliminarComentario"));
 
     document.querySelector("#insertarComentario").addEventListener("submit", e=>{
         e.preventDefault();
@@ -16,8 +15,8 @@ let app = new Vue({
     data: {
         comentarios: []  
     },
-    method: {
-        deleteComentario(idComentario, com, key){
+    methods: {
+        deleteComentario(idComentario){
             fetch(url+'/'+idComentario, {
                 method:'DELETE',
             })
@@ -39,30 +38,12 @@ let app = new Vue({
 
 const url= 'api/comentarios';
 
-function getAllComentarios(){
-    fetch (url)
-    .then (response=>{
-        if (!response.ok){
-            console.log("Error");
-        }
-        return response.json();
-    })
-    .then(comentarios=>{
-        showComentario(comentarios);
-            
-    })
-    .catch(error=>{
-        console.log(error);
-    }) 
-}
-
 function getComentariosPorPelicula(){
     let idPelicula=document.querySelector("#idPelicula").value;
-    fetch (url+'/'+idPelicula)
+    fetch ('api/peliculas/'+idPelicula+'/comentarios')
     .then(response => response.json())
     .then(comentarios => app.comentarios = comentarios)
     .catch(error => console.log(error));
-
 }
 
 function insertComentario(){

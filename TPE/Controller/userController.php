@@ -15,7 +15,7 @@ class userController{
 
     }
 
-    function checkLoggedIn(){
+    function checkLoggedIn(){//cambiar nombre
         session_start();
         if(!isset($_SESSION['email'])){
             return null;

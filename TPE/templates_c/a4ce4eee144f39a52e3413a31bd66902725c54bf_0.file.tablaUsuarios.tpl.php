@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-23 17:29:48
+/* Smarty version 3.1.34-dev-7, created on 2020-11-26 00:04:05
   from 'C:\xampp\htdocs\TPE\templates\tablaUsuarios.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fbbe37cd60fa3_67891487',
+  'unifunc' => 'content_5fbee2e57e4416_55187037',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a4ce4eee144f39a52e3413a31bd66902725c54bf' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\tablaUsuarios.tpl',
-      1 => 1606148902,
+      1 => 1606332257,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fbbe37cd60fa3_67891487 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fbee2e57e4416_55187037 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -31,15 +31,11 @@ $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_
         <article>
             <h2>Usuarios</h2>
             <section>
-                <table class="tabla">
+                <table class="table">
                     <thead>
                         <tr>
-                            <th>Mail</th>
-                            <th>Estado</th>
-                            <?php if ($_smarty_tpl->tpl_vars['logeado']->value == true) {?>
-                            <th><i  class="fas fa-trash-alt"></i></th>
-                            <th><i class="fas fa-user-cog"></i></th>
-                            <?php }?>
+                            <th scope="col">Mail</th>
+                            <th scope="col">Estado</th>
                         </tr>
                     </thead>
                     <tbody class="body-table">
@@ -50,7 +46,7 @@ if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['usuario']->value
 $_smarty_tpl->tpl_vars['usuario']->do_else = false;
 ?>
                             <tr>
-                                <td><?php echo $_smarty_tpl->tpl_vars['usuario']->value->email;?>
+                                <td scope="row"><?php echo $_smarty_tpl->tpl_vars['usuario']->value->email;?>
 </td>
                                 <?php if ($_smarty_tpl->tpl_vars['usuario']->value->administrador == false) {?>
                                 <td>Usuario</td>
@@ -58,14 +54,14 @@ $_smarty_tpl->tpl_vars['usuario']->do_else = false;
                                 <td>Administrador</td>
                                 <?php }?>
                                 <?php if ($_smarty_tpl->tpl_vars['logeado']->value->administrador) {?>
-                                <td><button><a href="deleteUsuario/<?php echo $_smarty_tpl->tpl_vars['usuario']->value->id_usuario;?>
-"><i class="fas fa-trash-alt"></i></a><button></td>
+                                <td><a type="button" href="deleteUsuario/<?php echo $_smarty_tpl->tpl_vars['usuario']->value->id_usuario;?>
+" class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
                                     <?php if ($_smarty_tpl->tpl_vars['usuario']->value->administrador == false) {?>
-                                    <td><button><a href="establecerAdmin/<?php echo $_smarty_tpl->tpl_vars['usuario']->value->id_usuario;?>
-"><i class="fas fa-user-cog"></i></a><button></td>
+                                    <td><a type="button" href="establecerAdmin/<?php echo $_smarty_tpl->tpl_vars['usuario']->value->id_usuario;?>
+" class="btn btn-light"><i class="fas fa-user-cog"></i></i></a></td>
                                     <?php } else { ?>
-                                    <td><button><a href="quitarAdmin/<?php echo $_smarty_tpl->tpl_vars['usuario']->value->id_usuario;?>
-"><i class="fas fa-ban"></i></a><button></td>
+                                    <td><a type="button" href="quitarAdmin/<?php echo $_smarty_tpl->tpl_vars['usuario']->value->id_usuario;?>
+" class="btn btn-light"><i class="fas fa-ban"></i></a></td>
                                     <?php }?>
                                 <?php }?>
                             </tr>

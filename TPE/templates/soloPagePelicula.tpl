@@ -4,18 +4,12 @@
     <h2 class="tituloPelicula">{$pelicula->titulo}</h2>
 </div>
 <section class="especificacionPelicula">
-    <div class="formulario_contenido">
-        <h4>Descripción: {$pelicula->descripcion}</h4>
-    </div>
-    <div class="formulario_contenido">
-        <h4>Director: {$pelicula->director}</h4>
-    </div>
-    <div class="formulario_contenido">
-        <h4>Fecha de estreno: {$pelicula->estreno}</h4>
-    </div>
-    <div class="formulario_contenido">
-        <h4>Género: {$pelicula->tipo}</h4>
-    </div>
+    <ul class="list-group list-group-flush font-weight-bold">
+        <li class="list-group-item">Descripción: {$pelicula->descripcion}</li>
+        <li class="list-group-item">Director: {$pelicula->director}</li>
+        <li class="list-group-item">Fecha de estreno: {$pelicula->estreno}</li>
+        <li class="list-group-item">Género: {$pelicula->tipo}</li>
+    </ul>
 </section>
 {include file="comentarios.tpl"}
 {include file="footer.tpl"}

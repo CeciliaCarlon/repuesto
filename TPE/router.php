@@ -11,10 +11,11 @@
   
     // rutas
     $r->addRoute("home", "GET", "peliculaController", "Home");
-    $r->addRoute("tabla", "GET", "peliculaController", "TablaPeliculas");
+    $r->addRoute("peliculas", "GET", "peliculaController", "TablaPeliculas");
+    $r->addRoute("generos", "GET", "generoController", "TablaGeneros");
     $r->addRoute("usuarios", "GET", "userController", "TablaUsuarios");
     $r->addRoute("comentarios", "GET", "comentarioController", "GetComentarios");
-
+    
     //Login/Logout/Registrarse
     $r->addRoute("registrarUser", "POST", "userController", "Registrar");
     $r->addRoute("login", "GET", "userController", "Login");

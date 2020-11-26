@@ -16,7 +16,7 @@ class peliculaController{
         $this->view = new peliculaView();
         $this->model = new peliculaModel();
         $this->modelGenero = new generoModel();
-        $this->controllerUser= new userController();
+        $this->controllerUser= new userController();//hacer helper
     }
 
     function Home($params=null){
@@ -28,7 +28,7 @@ class peliculaController{
         $logeado=$this->controllerUser->checkLoggedIn();
         $pelicula=$this->model->getAllData();
         $genero=$this->modelGenero->GetGeneros();
-        $this->view->showTabla($pelicula, $genero, $genero, $logeado);
+        $this->view->showTablaPeliculas($pelicula, $genero, $genero, $logeado);
     }
 
     function InsertarPelicula($params=null){
@@ -48,7 +48,7 @@ class peliculaController{
             $estreno=$_POST['input_estreno'];
             $genero=$_POST['select_genero'];
             $this->model->insertarPelicula($titulo, $descripcion, $director, $estreno, $genero);
-            $this->view->showTablaLocation();
+            $this->view->showTablaPeliculasLocation();
         }
         
     }
@@ -86,7 +86,7 @@ class peliculaController{
             $estreno=$_POST['editar_estreno_input'];
             $genero=$_POST['editar_genero_select'];
             $this->model->updateTablaPelicula($idPelicula, $titulo, $descripcion, $director, $estreno, $genero);
-            $this->view->showTablaLocation();
+            $this->view->showTablaPeliculasLocation();
         }
     }
 
@@ -98,7 +98,7 @@ class peliculaController{
         else{
             $idPelicula=$params[':ID'];
             $this->model->borrarPeliculaDB($idPelicula);
-            $this->view->showTablaLocation();
+            $this->view->showTablaPeliculasLocation();
         }
     }
 
@@ -112,7 +112,7 @@ class peliculaController{
             $generoElegido=$this->modelGenero->GetGeneroID($id_genero);
             $peliculasFiltradas=$this->model->getPeliculaPorGenero($generoElegido->id_genero);
             $genero=$this->modelGenero->GetGeneros();
-            $this->view->showTabla($peliculasFiltradas,$generoElegido, $genero, $logeado);
+            $this->view->showTablaPeliculas($peliculasFiltradas,$generoElegido, $genero, $logeado);
         }
     }
 

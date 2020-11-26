@@ -11,15 +11,13 @@ class generoModel{
     function GetGeneros() {
         $sentencia =$this->db->prepare('SELECT * FROM genero');
         $sentencia->execute();
-        $generos=$sentencia->fetchAll(PDO::FETCH_OBJ);
-        return $generos;
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
     function getGeneroID($id_generos){
         $sentencia = $this->db->prepare("SELECT * FROM genero WHERE id_genero=?");
         $sentencia->execute(array($id_generos));
-        $generos=$sentencia->fetch(PDO::FETCH_OBJ);
-        return $generos;
+        return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
     function insertarGenero($tipo) {

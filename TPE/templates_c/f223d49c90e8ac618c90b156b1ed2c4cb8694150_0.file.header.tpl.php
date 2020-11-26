@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-23 20:45:17
+/* Smarty version 3.1.34-dev-7, created on 2020-11-25 23:51:57
   from 'C:\xampp\htdocs\TPE\templates\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fbc114dcba624_89609660',
+  'unifunc' => 'content_5fbee00ddd9a74_83329979',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f223d49c90e8ac618c90b156b1ed2c4cb8694150' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\header.tpl',
-      1 => 1606160090,
+      1 => 1606334359,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5fbc114dcba624_89609660 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fbee00ddd9a74_83329979 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,10 +31,6 @@ function content_5fbc114dcba624_89609660 (Smarty_Internal_Template $_smarty_tpl)
     <title>Mabrex</title>
     <!-- CSS -->
     <link href="css/style.css" rel="stylesheet"/>
-    <!-- JS -->
-    <?php echo '<script'; ?>
- type="text/javascript" src="./js/javascript.js"><?php echo '</script'; ?>
->
     <!-- FONT AWESOME -->
     <?php echo '<script'; ?>
  src="https://kit.fontawesome.com/7f791b61f0.js" crossorigin="anonymous"><?php echo '</script'; ?>
@@ -43,8 +39,10 @@ function content_5fbc114dcba624_89609660 (Smarty_Internal_Template $_smarty_tpl)
     <?php echo '<script'; ?>
  src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"><?php echo '</script'; ?>
 >
-
+    <!-- BOOSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    
 </head>
-<body>
+<body class="p-3 mb-2 bg-secondary text-white">
     <?php }
 }

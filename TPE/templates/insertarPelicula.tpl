@@ -2,32 +2,28 @@
 {include file="botonera.tpl"}
 <form action="insertarPelicula" method="POST">
     <div class="tabla_inputs">
-        <label>Titulo</label>
-        <div class="respuesta">
-            <input class="input_titulo" name="input_titulo" type="text" placeholder="Titulo">
+        <div class="form-group">
+            <input class="form-control" name="input_titulo" id="exampleInputEmail1" aria-describedby="emailHelp" type="text" placeholder="Titulo">
         </div>
-        <label>Descripción</label>
-        <div class="respuesta">
-            <input class="input_descripcion" name="input_descripcion" type="text" placeholder="Descripcion">
+        <div class="form-group">
+            <input class="form-control" name="input_descripcion" id="exampleInputEmail1" aria-describedby="emailHelp" type="text" placeholder="Descripción">
         </div>
-        <label>Director/a</label>
-        <div class="respuesta">
-            <input class="input_director" name="input_director" type="text" placeholder="Director/a">
+        <div class="form-group">
+            <input class="form-control" name="input_director" id="exampleInputEmail1" aria-describedby="emailHelp" type="text" placeholder="Director/a">
         </div>
-        <label>Fecha de Estreno</label>
-        <div class="respuesta">
-            <input class="input_estreno" name="input_estreno" type="text" placeholder="Estreno">
+        <div class="form-group">
+            <input class="form-control" name="input_estreno" id="exampleInputEmail1" aria-describedby="emailHelp" type="text" placeholder="Estreno">
         </div>
         <label>Genero</label>
-        <div class="respuesta">
-            <select name="select_genero">';
+        <div class="input-group mb-3">
+            <select name="select_genero" class="custom-select" id="inputGroupSelect01">';
                 {foreach from=$generos item=genero}
                     <option value="{$genero->id_genero}">{$genero->tipo}</option>
                 {/foreach}
             </select>
         </div>
         <div>
-            <button type="submit" class="btn_agregar">Agregar</button>
+            <button type="submit" class="btn btn-light">Agregar</button>
         </div>
     </div>    
 </form>    

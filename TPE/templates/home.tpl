@@ -18,23 +18,19 @@
         <aside>
             <h2 class="comentarios">Comentarios</h2>
             <div>
-             <p class="nombres_comentarios">Marcela</p> 
-             <p>Exelentes películas. En esta página pude encontrar todas
+             <p class="p-3 mb-2 bg-danger text-white"><label class="font-weight-bold">Marcela:</label> Exelentes películas. En esta página pude encontrar todas
               mis películas favoritas y los últimos estrenos.</p> 
             </div> 
             <div>
-             <p class="nombres_comentarios">Fabricio</p>
-             <p>Es fácil ingresar y la interfaz tiene una estetica increible.
+             <p class="p-3 mb-2 bg-danger text-white"><label class="font-weight-bold">Fabricio:</label> Es fácil ingresar y la interfaz tiene una estetica increible.
               Me encanta como está todo organizado.</p>
             </div>
             <div>
-             <p class="nombres_comentarios">Francisco</p>
-             <p>Muy buena calidad las películas.</p>
+             <p class="p-3 mb-2 bg-danger text-white"><label class="font-weight-bold">Francisco:</label> Muy buena calidad las películas.</p>
             </div> 
             <div>
-             <p class="nombres_comentarios">Lucrecia</p> 
-             <p>Muy recomendable esta página. Se la mostré a todes mis amigues y
-               les encanta. No puedo parar de ver películas.</p>
+             <p class="p-3 mb-2 bg-danger text-white"><label class="font-weight-bold">Lucrecia:</label> Muy recomendable esta página. Se la mostré a todes mis amigues y
+               les encanta. No puedo parar de ver películas.</p> 
             </div>
         </aside>
     </div>

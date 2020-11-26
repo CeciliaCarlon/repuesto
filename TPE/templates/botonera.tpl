@@ -1,18 +1,23 @@
 <header>
-    <h1>MABREX</h1>
-    <nav>
-        <button class="btn_menu">Menu</button>
-        <ul class="botonera">
-            <li><a class="boton" href="home">Inicio</a></li>
-            <li><a class="boton" href="tabla">Tabla</a></li>
-            {if $logeado neq null}
-                {if $logeado->administrador}
-                <li><a class="boton" href="usuarios">Usuarios</a></li>
-                {/if}
-            <li><a class="boton" href="logout">Cerrar Sesion</a></li>
-            {else}
-            <li><a class="boton" href="login">Iniciar Sesion</a></li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <h1 class="navbar-brand">MABREX</h1>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <a class="nav-link active" href="home">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="peliculas">Peliculas</a>
+        <a class="nav-link" href="generos">Géneros</a>
+        {if $logeado neq null}
+            {if $logeado->administrador}
+            <a class="nav-link" href="usuarios">Usuarios</a>
             {/if}
-        </ul>
+        <a class="nav-link" href="logout">Cerrar Sesion</a>
+        {else}
+        <a class="nav-link" href="login">Iniciar Sesion</a>
+        {/if}
+        </div>
+    </div>
     </nav>
 </header>

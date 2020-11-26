@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-23 18:16:36
+/* Smarty version 3.1.34-dev-7, created on 2020-11-25 23:55:47
   from 'C:\xampp\htdocs\TPE\templates\insertarPelicula.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fbbee7459bc90_88729624',
+  'unifunc' => 'content_5fbee0f39720e1_80262561',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7433803f485c95e143027fe04d5ea6cc52eb1b1a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\insertarPelicula.tpl',
-      1 => 1606146862,
+      1 => 1606332025,
       2 => 'file',
     ),
   ),
@@ -23,31 +23,27 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fbbee7459bc90_88729624 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fbee0f39720e1_80262561 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <form action="insertarPelicula" method="POST">
     <div class="tabla_inputs">
-        <label>Titulo</label>
-        <div class="respuesta">
-            <input class="input_titulo" name="input_titulo" type="text" placeholder="Titulo">
+        <div class="form-group">
+            <input class="form-control" name="input_titulo" id="exampleInputEmail1" aria-describedby="emailHelp" type="text" placeholder="Titulo">
         </div>
-        <label>Descripción</label>
-        <div class="respuesta">
-            <input class="input_descripcion" name="input_descripcion" type="text" placeholder="Descripcion">
+        <div class="form-group">
+            <input class="form-control" name="input_descripcion" id="exampleInputEmail1" aria-describedby="emailHelp" type="text" placeholder="Descripción">
         </div>
-        <label>Director/a</label>
-        <div class="respuesta">
-            <input class="input_director" name="input_director" type="text" placeholder="Director/a">
+        <div class="form-group">
+            <input class="form-control" name="input_director" id="exampleInputEmail1" aria-describedby="emailHelp" type="text" placeholder="Director/a">
         </div>
-        <label>Fecha de Estreno</label>
-        <div class="respuesta">
-            <input class="input_estreno" name="input_estreno" type="text" placeholder="Estreno">
+        <div class="form-group">
+            <input class="form-control" name="input_estreno" id="exampleInputEmail1" aria-describedby="emailHelp" type="text" placeholder="Estreno">
         </div>
         <label>Genero</label>
-        <div class="respuesta">
-            <select name="select_genero">';
+        <div class="input-group mb-3">
+            <select name="select_genero" class="custom-select" id="inputGroupSelect01">';
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['generos']->value, 'genero');
 $_smarty_tpl->tpl_vars['genero']->do_else = true;
@@ -63,7 +59,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </select>
         </div>
         <div>
-            <button type="submit" class="btn_agregar">Agregar</button>
+            <button type="submit" class="btn btn-light">Agregar</button>
         </div>
     </div>    
 </form>    

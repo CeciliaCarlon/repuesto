@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-23 17:29:48
+/* Smarty version 3.1.34-dev-7, created on 2020-11-25 23:51:57
   from 'C:\xampp\htdocs\TPE\templates\botonera.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fbbe37cd78af6_52535830',
+  'unifunc' => 'content_5fbee00dde87b5_23956760',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f8253b32171b807d62a571b416a0b79961949c52' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\botonera.tpl',
-      1 => 1606148784,
+      1 => 1606343970,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,29 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5fbbe37cd78af6_52535830 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fbee00dde87b5_23956760 (Smarty_Internal_Template $_smarty_tpl) {
 ?><header>
-    <h1>MABREX</h1>
-    <nav>
-        <button class="btn_menu">Menu</button>
-        <ul class="botonera">
-            <li><a class="boton" href="home">Inicio</a></li>
-            <li><a class="boton" href="tabla">Tabla</a></li>
-            <?php if ($_smarty_tpl->tpl_vars['logeado']->value != null) {?>
-                <?php if ($_smarty_tpl->tpl_vars['logeado']->value->administrador) {?>
-                <li><a class="boton" href="usuarios">Usuarios</a></li>
-                <?php }?>
-            <li><a class="boton" href="logout">Cerrar Sesion</a></li>
-            <?php } else { ?>
-            <li><a class="boton" href="login">Iniciar Sesion</a></li>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <h1 class="navbar-brand">MABREX</h1>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <a class="nav-link active" href="home">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="peliculas">Peliculas</a>
+        <a class="nav-link" href="generos">Géneros</a>
+        <?php if ($_smarty_tpl->tpl_vars['logeado']->value != null) {?>
+            <?php if ($_smarty_tpl->tpl_vars['logeado']->value->administrador) {?>
+            <a class="nav-link" href="usuarios">Usuarios</a>
             <?php }?>
-        </ul>
+        <a class="nav-link" href="logout">Cerrar Sesion</a>
+        <?php } else { ?>
+        <a class="nav-link" href="login">Iniciar Sesion</a>
+        <?php }?>
+        </div>
+    </div>
     </nav>
-</header><?php }
+</header>
+<?php }
 }

@@ -16,10 +16,10 @@ class generoController{
         $this->controllerUser= new userController();
     }
 
-    function ShowTablaGenero ($params=null){
+    function TablaGeneros ($params=null){
         $logeado=$this->controllerUser->checkLoggedIn();
-        $tipo=$this->model->GetGeneros();
-        $this->view-> showTablaGenero($tipo, $logeado);
+        $generos=$this->model->GetGeneros();
+        $this->view-> showTablaGenero($generos, $logeado);
     }
 
     function InsertarGenero($params=null){
@@ -33,7 +33,7 @@ class generoController{
         else{
             $tipo=$_POST['input_tipo'];
             $this->model->insertarGenero($tipo);
-            $this->view->showTablaLocation();
+            $this->view->showTablaGenerosLocation();
         }
     }
     
@@ -45,7 +45,7 @@ class generoController{
         else{
             $id_genero= $params[':ID'];
             $this->model ->DeleteGenero($id_genero);
-            $this->view->showTablaLocation(); 
+            $this->view->showTablaGenerosLocation(); 
         }
     }
 
@@ -61,7 +61,7 @@ class generoController{
             $id_genero=$params[':ID'];
             $genero=$_POST['editar_genero_input'];
             $this->model->UpdateGenero( $genero,$id_genero);
-            $this->view->showTablaLocation();
+            $this->view->showTablaGenerosLocation();
         }
     }
     

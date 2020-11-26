@@ -9,10 +9,10 @@ class generoView{
     function __construct(){
         $this->smarty = new Smarty();
     }
-    function showTablaGenero($generos){
+    function showTablaGenero($generos, $logeado){
         $this->smarty->assign('BASE_URL' , BASE_URL);
-        $this->smarty->assign('genero',"Generos");
-        $this->smarty->assign('genero', $generos);
+        $this->smarty->assign('generos', $generos);
+        $this->smarty->assign('logeado', $logeado);
         $this->smarty->display('./templates/tablaGenero.tpl');
     }
      
@@ -20,8 +20,8 @@ class generoView{
         header("Location: ".BASE_URL."home");
     }
 
-    function showTablaLocation(){
-        header("Location: ".BASE_URL."tabla");
+    function showTablaGenerosLocation(){
+        header("Location: ".BASE_URL."generos");
     }
     
     function showFormularioInsertarGenero($generos, $logeado){
