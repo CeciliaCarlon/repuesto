@@ -34,4 +34,21 @@
             {/if}
         </aside>
     </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+            </li>
+            {for $foo=1 to $paginacion}
+            <li class="page-item"><a class="page-link" href="peliculas={$foo}">{$foo}</a></li>
+            {/for}
+            <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+            </li>
+        </ul>
+    </nav>
 {include file="footer.tpl"}

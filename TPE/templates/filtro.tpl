@@ -12,7 +12,7 @@
                 </select>
             </div>
         <button class="btn btn-light" type="submit">Filtrar</button>
-        <a type="button" class="btn btn-light" href="{BASE_URL}tabla">Mostrar Todas</a>
+        <a type="button" class="btn btn-light" href="{BASE_URL}peliculas">Mostrar Todas</a>
         </form>
     </div>
 </aside>
