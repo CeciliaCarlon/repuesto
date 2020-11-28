@@ -20,10 +20,7 @@ class generoModel{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 
-    function insertarGenero($tipo) {
-        $sentencia = $this->db->prepare("INSERT INTO genero(tipo) VALUES (?)");
-        $sentencia->execute(array($tipo));
-    }
+   
 
     function  DeleteGenero($generos_id) {
         $sentencia  = $this->db->prepare("DELETE FROM genero WHERE id_genero=?");
@@ -34,6 +31,22 @@ class generoModel{
         $sentencia  = $this->db -> prepare ( "UPDATE genero SET tipo=? WHERE id_genero =?" );
         $sentencia->execute ( array ($genero,$id_genero)); 
     }
+    public function insertarGenero($titulo, $descripcion, $prioridad, $imagen = null) {
+        $pathImg = null;
+        if ($imagen)
+            $pathImg = $this->uploadImage($imagen);
 
+        $query = $this->db->prepare('INSERT INTO tareas(tipo, imagen) VALUES(?,?)');
+        $query->execute([$tipo, $pathImg]);
+
+        return $this->db->lastInsertId();
+    }
+
+        /**
+    private function uploadImage($image){
+        $target = 'img/task/' . uniqid() . '.jpg';
+        move_uploaded_file($image, $target);
+        return $target;**/
+    }
 }
 

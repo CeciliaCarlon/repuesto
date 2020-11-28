@@ -21,22 +21,31 @@ class generoController{
         $generos=$this->model->GetGeneros();
         $this->view-> showTablaGenero($generos, $logeado);
     }
-
     function InsertarGenero($params=null){
-        $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
+        $logeado=$this->checkLoggedIn();
         if(empty($_POST['input_tipo']) || !isset($_POST['input_tipo'])){
             $this->view->showError("No se pudo insertar el genero. Por favor complete todos los campos.", $logeado);
         }
-        else if($logeado==null || $logeado->administrador==false){
+        else if($logeado==null || $logeado==false){
             $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $tipo=$_POST['input_tipo'];
-            $this->model->insertarGenero($tipo);
-            $this->view->showTablaGenerosLocation();
+
+            if ($agregar){
+                $this->model->insertarGenero($tipo);
+                 if($_FILES['input_imagen']['type'] == "image/jpg" || $_FILES['input_imagen']['type'] == "image/jpeg" 
+                     || $_FILES['input_imagen']['type'] == "image/png" ) {
+                     $this->model->InsertarGenero($tipo, $_FILES['input_imagen']['tmp_imagen']);
+                 }
+                 else {
+                     $this->model->insertarGenero($tipo);
+                     $this->view->showTablaLocation();
+             
+ 
+           
+                 }
         }
-    }
-    
     function  DeleteGenero($params=null) {
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         if($logeado == null || $logeado->administrador==false){
