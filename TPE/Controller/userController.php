@@ -70,14 +70,21 @@ class userController{
             $this->view->showError("No se pudo resgistrar. Por favor complete todos los campos.", $logeado);
         }
         else{
-            if($password!=$confirmacionPassword){
-                $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-                $this->view->showError("No se pudo resgistrar. La contraseña es diferente.", $logeado);
+            $emailExistente= $this->model->getUsuario($email);
+            if($emailExistente==null){
+                if($password!=$confirmacionPassword){
+                    $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
+                    $this->view->showError("No se pudo resgistrar. La contraseña es diferente.", $logeado);
+                }
+                else{
+                    $passwordEncriptada= password_hash($password, PASSWORD_DEFAULT);
+                    $this->model->crearUsuario($email, $passwordEncriptada, $admin);
+                    $this->VerificarUsuario(null);
+                }
             }
             else{
-                $passwordEncriptada= password_hash($password, PASSWORD_DEFAULT);
-                $this->model->crearUsuario($email, $passwordEncriptada, $admin);
-                $this->VerificarUsuario(null);
+                $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
+                $this->view->showError("No se pudo resgistrar. Ya existe un usuario con ese email.", $logeado);
             }
         }
     }
