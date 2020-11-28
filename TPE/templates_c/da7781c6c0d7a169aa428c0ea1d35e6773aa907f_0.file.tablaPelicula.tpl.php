@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-26 03:42:30
+/* Smarty version 3.1.34-dev-7, created on 2020-11-28 01:56:23
   from 'C:\xampp\htdocs\TPE\templates\tablaPelicula.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fbf161672c813_27465058',
+  'unifunc' => 'content_5fc1a03716f4b2_60081999',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'da7781c6c0d7a169aa428c0ea1d35e6773aa907f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\tablaPelicula.tpl',
-      1 => 1606358546,
+      1 => 1606524976,
       2 => 'file',
     ),
   ),
@@ -24,7 +24,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fbf161672c813_27465058 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc1a03716f4b2_60081999 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -32,7 +32,7 @@ $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_
         <article>
             <h2>Peliculas</h2>
             <section>
-                <table class="table">
+                <table class="table text-center">
                     <thead>
                         <tr>
                             <th scope="col">Titulo</th>
@@ -83,16 +83,18 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </a>
             </li>
             <?php
-$_smarty_tpl->tpl_vars['foo'] = new Smarty_Variable(null, $_smarty_tpl->isRenderingCache);$_smarty_tpl->tpl_vars['foo']->step = 1;$_smarty_tpl->tpl_vars['foo']->total = (int) ceil(($_smarty_tpl->tpl_vars['foo']->step > 0 ? $_smarty_tpl->tpl_vars['paginacion']->value+1 - (1) : 1-($_smarty_tpl->tpl_vars['paginacion']->value)+1)/abs($_smarty_tpl->tpl_vars['foo']->step));
-if ($_smarty_tpl->tpl_vars['foo']->total > 0) {
-for ($_smarty_tpl->tpl_vars['foo']->value = 1, $_smarty_tpl->tpl_vars['foo']->iteration = 1;$_smarty_tpl->tpl_vars['foo']->iteration <= $_smarty_tpl->tpl_vars['foo']->total;$_smarty_tpl->tpl_vars['foo']->value += $_smarty_tpl->tpl_vars['foo']->step, $_smarty_tpl->tpl_vars['foo']->iteration++) {
-$_smarty_tpl->tpl_vars['foo']->first = $_smarty_tpl->tpl_vars['foo']->iteration === 1;$_smarty_tpl->tpl_vars['foo']->last = $_smarty_tpl->tpl_vars['foo']->iteration === $_smarty_tpl->tpl_vars['foo']->total;?>
-            <li class="page-item"><a class="page-link" href="peliculas=<?php echo $_smarty_tpl->tpl_vars['foo']->value;?>
-"><?php echo $_smarty_tpl->tpl_vars['foo']->value;?>
-</a></li>
-            <?php }
-}
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['paginacion']->value, 'p');
+$_smarty_tpl->tpl_vars['p']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['p']->value) {
+$_smarty_tpl->tpl_vars['p']->do_else = false;
 ?>
+            <li class="page-item"><a class="page-link" href="<?php echo BASE_URL;?>
+peliculas/<?php echo $_smarty_tpl->tpl_vars['p']->value+1;?>
+"><?php echo $_smarty_tpl->tpl_vars['p']->value+1;?>
+</a></li>
+            <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             <li class="page-item">
             <a class="page-link" href="#" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>

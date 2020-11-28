@@ -4,7 +4,7 @@
         <article>
             <h2>Peliculas</h2>
             <section>
-                <table class="table">
+                <table class="table text-center">
                     <thead>
                         <tr>
                             <th scope="col">Titulo</th>
@@ -41,9 +41,9 @@
                 <span aria-hidden="true">&laquo;</span>
             </a>
             </li>
-            {for $foo=1 to $paginacion}
-            <li class="page-item"><a class="page-link" href="peliculas={$foo}">{$foo}</a></li>
-            {/for}
+            {foreach from=$paginacion item=p}
+            <li class="page-item"><a class="page-link" href="{BASE_URL}peliculas/{$p+1}">{$p+1}</a></li>
+            {/foreach}
             <li class="page-item">
             <a class="page-link" href="#" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>

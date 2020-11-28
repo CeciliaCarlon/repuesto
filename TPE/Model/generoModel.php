@@ -14,9 +14,9 @@ class generoModel{
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function getGeneroID($id_generos){
+    function getGeneroID($id_genero){
         $sentencia = $this->db->prepare("SELECT * FROM genero WHERE id_genero=?");
-        $sentencia->execute(array($id_generos));
+        $sentencia->execute(array($id_genero));
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
 

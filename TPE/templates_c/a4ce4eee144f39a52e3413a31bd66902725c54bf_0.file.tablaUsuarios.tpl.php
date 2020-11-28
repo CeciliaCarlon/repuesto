@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-26 00:04:05
+/* Smarty version 3.1.34-dev-7, created on 2020-11-27 19:36:05
   from 'C:\xampp\htdocs\TPE\templates\tablaUsuarios.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fbee2e57e4416_55187037',
+  'unifunc' => 'content_5fc147159cbed1_12296193',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a4ce4eee144f39a52e3413a31bd66902725c54bf' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\tablaUsuarios.tpl',
-      1 => 1606332257,
+      1 => 1606434585,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fbee2e57e4416_55187037 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc147159cbed1_12296193 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -31,7 +31,7 @@ $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_
         <article>
             <h2>Usuarios</h2>
             <section>
-                <table class="table">
+                <table class="table text-center">
                     <thead>
                         <tr>
                             <th scope="col">Mail</th>

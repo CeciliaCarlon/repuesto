@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
         <a class="nav-link active" href="home">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-link" href="peliculas">Peliculas</a>
+        <a class="nav-link" href="peliculas/1">Peliculas</a>
         <a class="nav-link" href="generos">Géneros</a>
         {if $logeado neq null}
             {if $logeado->administrador}

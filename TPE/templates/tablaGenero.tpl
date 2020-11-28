@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 {include file="botonera.tpl"}
     <h2>Generos</h2>
-    <table class="table">
+    <table class="table text-center">
         <thead>
             <tr>
                 <th scope="col">Tipo</th>
@@ -23,4 +23,3 @@
     <a type="button" href="formularioInsertarGenero" class="btn btn-light">Insertar Genero<i class="fas fa-plus"></i></a>
     {/if}
 {include file="footer.tpl"}
-

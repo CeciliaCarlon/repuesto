@@ -14,20 +14,17 @@ class peliculaModel{
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function getAllData(){
-        $sentencia = $this->db->prepare( "SELECT * FROM pelicula INNER JOIN genero ON pelicula.id_genero=genero.id_genero" );
+    function getAllDataPaginada($empezarDesde, $pelis_x_pagina){
+        $sentencia = $this->db->prepare( "SELECT * FROM pelicula INNER JOIN genero ON pelicula.id_genero=genero.id_genero 
+        LIMIT $empezarDesde, $pelis_x_pagina");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function getPaginacion(){
-        $sentencia = $this->db->prepare( "SELECT * FROM pelicula INNER JOIN genero ON pelicula.id_genero=genero.id_genero" );
+    function getPeliculas(){
+        $sentencia = $this->db->prepare( "SELECT * FROM pelicula" );
         $sentencia->execute();
-
-        $totalPelis=$sentencia->rowCount();
-        $pelis_x_pagina=3;
-        $paginas=$totalPelis/$pelis_x_pagina;
-        return ceil($paginas);
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
     function getPeliculaID($id_pelicula){

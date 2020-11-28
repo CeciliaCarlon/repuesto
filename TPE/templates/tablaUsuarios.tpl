@@ -4,7 +4,7 @@
         <article>
             <h2>Usuarios</h2>
             <section>
-                <table class="table">
+                <table class="table text-center">
                     <thead>
                         <tr>
                             <th scope="col">Mail</th>

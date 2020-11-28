@@ -26,10 +26,26 @@ class peliculaController{
 
     function TablaPeliculas($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-        $pelicula=$this->model->getAllData();
-        $genero=$this->modelGenero->GetGeneros();
-        $paginacion= $this->model->getPaginacion();
-        $this->view->showTablaPeliculas($pelicula, $genero, $paginacion, $logeado);
+        //la cantidad de peliculas que queremos que aparezcan por pagina
+        $pelis_x_pagina=3;
+        if($params[':ID']==null){
+            $pagina= intval(1);
+        }
+        else{
+            $pagina=intval($params[':ID']);
+        }
+        $empezarDesde=($pagina-1)*$pelis_x_pagina;
+        $Allpeliculas= $this->model->getAllDataPaginada($empezarDesde, $pelis_x_pagina);
+        $generos=$this->modelGenero->GetGeneros();
+        $peliculas= $this->model->getPeliculas();
+        $totalPelis=count($peliculas);
+        //la cantidad de paginas que se necesitan dividido la cantidad de peliculas que queremos mostrar
+        $totalPaginas= ceil($totalPelis/$pelis_x_pagina);
+        $paginas=[];
+        for($i=0; $i<$totalPaginas; $i++){
+            array_push($paginas, $i);
+        }
+        $this->view->showTablaPeliculas($Allpeliculas, $generos, $generos, $paginas, $logeado);
     }
 
     function InsertarPelicula($params=null){
@@ -113,7 +129,8 @@ class peliculaController{
             $generoElegido=$this->modelGenero->GetGeneroID($id_genero);
             $peliculasFiltradas=$this->model->getPeliculaPorGenero($generoElegido->id_genero);
             $genero=$this->modelGenero->GetGeneros();
-            $this->view->showTablaPeliculas($peliculasFiltradas,$generoElegido, $genero, $logeado);
+            $paginacion= $this->model->getPaginacion();
+            $this->view->showTablaPeliculas($peliculasFiltradas,$generoElegido, $genero, $paginacion, $logeado);
         }
     }
 
