@@ -11,7 +11,7 @@
   
     // rutas
     $r->addRoute("home", "GET", "peliculaController", "Home");
-    $r->addRoute("peliculas/:ID", "GET", "peliculaController", "TablaPeliculas");
+    $r->addRoute("peliculas/pagina/:ID", "GET", "peliculaController", "TablaPeliculas");
     $r->addRoute("generos", "GET", "generoController", "TablaGeneros");
     $r->addRoute("usuarios", "GET", "userController", "TablaUsuarios");
     $r->addRoute("comentarios", "GET", "comentarioController", "GetComentarios");
@@ -23,7 +23,7 @@
     $r->addRoute("verificarUser", "POST", "userController", "VerificarUsuario");
 
     //filtro
-    $r->addRoute("filtrarPelicula", "POST", "peliculaController", "FiltrarPelicula");
+    $r->addRoute("filtrarPelicula/:ID", "POST", "peliculaController", "FiltrarPelicula");
 
     //ver mas
     $r->addRoute("verMasPelicula/:ID", "GET", "peliculaController", "MostrarMasInformacionPelicula");
@@ -32,6 +32,7 @@
     $r->addRoute("deletePelicula/:ID", "GET", "peliculaController", "DeletePelicula");
     $r->addRoute("deleteGenero/:ID", "GET", "generoController", "DeleteGenero");
     $r->addRoute("deleteUsuario/:ID", "GET", "userController", "DeleteUsuario");
+    $r->addRoute("deleteImagen/:ID", "GET", "peliculaController", "DeleteImagenPelicula");
 
     //insertar
     $r->addRoute("insertarPelicula", "POST", "peliculaController", "InsertarPelicula");

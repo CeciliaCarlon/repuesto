@@ -7,6 +7,7 @@
                 <table class="table text-center">
                     <thead>
                         <tr>
+                            <th scope="col"></th>
                             <th scope="col">Titulo</th>
                             <th scope="col">Genero</th>
                         </tr>
@@ -14,7 +15,8 @@
                     <tbody class="body-table">
                         {foreach from=$peliculas item=pelicula}
                             <tr>
-                                <td scope="row">{$pelicula->titulo}</td>
+                                <td scope="row"><img  src="{$pelicula->imagen}"></td>
+                                <td>{$pelicula->titulo}</td>
                                 <td>{$pelicula->tipo}</td>
                                 <td><a type="button" href="verMasPelicula/{$pelicula->id_pelicula}" class="btn btn-light"><i class="fas fa-plus-circle"></i></a></td>
                                 {if $logeado neq null && $logeado->administrador}
@@ -36,19 +38,10 @@
     </div>
     <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
             </li>
             {foreach from=$paginacion item=p}
-            <li class="page-item"><a class="page-link" href="{BASE_URL}peliculas/{$p+1}">{$p+1}</a></li>
+            <li class="page-item"><a class="page-link" href="{BASE_URL}peliculas/pagina/{$p+1}">{$p+1}</a></li>
             {/foreach}
-            <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-            </li>
         </ul>
     </nav>
 {include file="footer.tpl"}

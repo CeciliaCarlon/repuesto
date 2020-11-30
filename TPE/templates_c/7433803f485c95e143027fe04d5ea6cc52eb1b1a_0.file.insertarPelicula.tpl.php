@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-25 23:55:47
+/* Smarty version 3.1.34-dev-7, created on 2020-11-29 19:58:52
   from 'C:\xampp\htdocs\TPE\templates\insertarPelicula.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fbee0f39720e1_80262561',
+  'unifunc' => 'content_5fc3ef6c05d017_05532048',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7433803f485c95e143027fe04d5ea6cc52eb1b1a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\insertarPelicula.tpl',
-      1 => 1606332025,
+      1 => 1606676229,
       2 => 'file',
     ),
   ),
@@ -23,11 +23,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fbee0f39720e1_80262561 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc3ef6c05d017_05532048 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
-<form action="insertarPelicula" method="POST">
+<form action="insertarPelicula" method="POST" enctype="multipart/form-data">
     <div class="tabla_inputs">
         <div class="form-group">
             <input class="form-control" name="input_titulo" id="exampleInputEmail1" aria-describedby="emailHelp" type="text" placeholder="Titulo">
@@ -58,6 +58,10 @@ $_smarty_tpl->tpl_vars['genero']->do_else = false;
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </select>
         </div>
+        <div class="form-group">
+            <input type="file" class="form-control-file" name="input_imagen" id="exampleFormControlFile1">
+        </div>
+        </form>
         <div>
             <button type="submit" class="btn btn-light">Agregar</button>
         </div>

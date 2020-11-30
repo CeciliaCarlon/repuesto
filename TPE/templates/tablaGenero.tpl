@@ -1,30 +1,25 @@
-
-<h2>Generos</h2>
-<section>
-    <table class="tabla">
+{include file="header.tpl"}
+{include file="botonera.tpl"}
+    <h2>Generos</h2>
+    <table class="table text-center">
         <thead>
             <tr>
-                <th>Tipo</th>
-                {if $logeado eq true}
-                <th><i class="fas fa-trash-alt"></th>
-                <th><i class="far fa-edit"></th>
-                {/if}
+                <th scope="col">Tipo</th>
             </tr>
         </thead>
         <tbody class="body-table">
-            {foreach from=$allGeneros item=genero}
+            {foreach from=$generos item=genero}
                 <tr>
-                    <td>{$genero->tipo}</td>
-                    {if isset($tarea->imagen)}
-                 <img src="{$tarea->imagen}"/>
-                  {/if}
-
-                    {if $logeado eq true}
-                    <td><button><a href="deleteGenero/{$genero->id_genero}"><i class="fas fa-trash-alt"></i></a><button></td>
-                    <td><button><a href="formularioEditarGenero/{$genero->id_genero}"><i class="far fa-edit"></a></i><button></td>
+                    <td scope="row">{$genero->tipo}</td>
+                    {if $logeado neq null && $logeado->administrador}
+                    <td><a type="button" href="deleteGenero/{$genero->id_genero}" class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
+                    <td><a type="button" href="formularioEditarGenero/{$genero->id_genero}" class="btn btn-light"><i class="far fa-edit"></i></a></td>
                     {/if}
                 </tr>
             {/foreach}
         </tbody>
     </table>
-</section>
+    {if $logeado neq null && $logeado->administrador}
+    <a type="button" href="formularioInsertarGenero" class="btn btn-light">Insertar Genero<i class="fas fa-plus"></i></a>
+    {/if}
+{include file="footer.tpl"}

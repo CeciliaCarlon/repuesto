@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-26 00:03:51
+/* Smarty version 3.1.34-dev-7, created on 2020-11-30 18:25:53
   from 'C:\xampp\htdocs\TPE\templates\insertarGenero.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fbee2d74a3ea9_26487906',
+  'unifunc' => 'content_5fc52b212753f7_66875017',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2fd879d249fb0a713411798075e6d62744ebed3a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\insertarGenero.tpl',
-      1 => 1606332110,
+      1 => 1606757151,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fbee2d74a3ea9_26487906 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc52b212753f7_66875017 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>

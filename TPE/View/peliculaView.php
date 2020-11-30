@@ -17,8 +17,9 @@ class peliculaView{
         $this->smarty->display('./templates/home.tpl');
     }
  
-    function showTablaPeliculas($peliculas, $generos, $allGeneros, $paginacion, $logeado){
+    function showTablaPeliculas($peliculas, $generos, $allGeneros, $paginacion, $accion, $logeado){
         $this->smarty->assign('BASE_URL' , BASE_URL);
+        $this->smarty->assign('accion' , $accion);
         $this->smarty->assign('logeado',$logeado);
         $this->smarty->assign('peliculas', $peliculas);
         $this->smarty->assign('generos', $generos);
@@ -32,7 +33,7 @@ class peliculaView{
     }
 
     function showTablaPeliculasLocation(){
-        header("Location: ".BASE_URL."peliculas/1");
+        header("Location: ".BASE_URL."peliculas/pagina/1");
     }
 
     function showFormularioInsertarPelicula($generos, $logeado){

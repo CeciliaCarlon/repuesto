@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 {include file="botonera.tpl"}
-<form action="editarPelicula/{$datosPeliculaPorEditar->id_pelicula}" method="POST">
+<form action="editarPelicula/{$datosPeliculaPorEditar->id_pelicula}" method="POST" enctype="multipart/form-data">
     <div class="tabla_inputs">
         <div class="form-group">
             <input class="form-control" name="editar_titulo_input" id="exampleInputEmail1" aria-describedby="emailHelp" type="text" value="{$datosPeliculaPorEditar->titulo}" placeholder="Editar Titulo">
@@ -22,9 +22,16 @@
                 {/foreach}
             </select>
         </div>
+        {if $datosPeliculaPorEditar->imagen!==null}
+            <a type="button" class="btn btn-light" href="deleteImagen/{$datosPeliculaPorEditar->id_pelicula}">Eliminar Imagen<i class="fas fa-trash-alt"></i></a>
+        {/if}
+        <div class="form-group">
+            <label>Reemplazar Imagen</label>
+            <input type="file" class="form-control-file" name="editar_imagen_input" id="exampleFormControlFile1">
+        </div>
         <div>
             <button type="submit" class="btn btn-light">Editar</button>
-            <a type="button" class="btn btn-light" href="{BASE_URL}peliculas">Cancelar</a>
+            <a type="button" class="btn btn-light" href="{BASE_URL}peliculas/pagina/1">Cancelar</a>
         </div>
     </div>
 <form>   

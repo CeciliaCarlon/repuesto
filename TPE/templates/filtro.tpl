@@ -1,6 +1,6 @@
 <aside>
     <div>
-        <form action="filtrarPelicula" method="POST">
+        <form action="filtrarPelicula/1" method="POST">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Filtrar por géneros</label>
@@ -12,7 +12,7 @@
                 </select>
             </div>
         <button class="btn btn-light" type="submit">Filtrar</button>
-        <a type="button" class="btn btn-light" href="{BASE_URL}peliculas">Mostrar Todas</a>
+        <a type="button" class="btn btn-light" href="{BASE_URL}peliculas/pagina/1">Mostrar Todas</a>
         </form>
     </div>
 </aside>
