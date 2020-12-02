@@ -58,11 +58,13 @@ class peliculaModel{
     function borrarPeliculaDB($idPelicula){
         $sentencia=$this->db->prepare("DELETE FROM pelicula WHERE id_pelicula=?");
         $sentencia->execute(array($idPelicula));
+        unlink($pelicula->imagen);
     }
 
-    function borrarImagenPelicula($idPelicula){
+    function borrarImagenPelicula($pelicula){
         $sentencia=$this->db->prepare("UPDATE pelicula SET imagen=? WHERE id_pelicula=?");
-        $sentencia->execute(array(null, $idPelicula));
+        $sentencia->execute(array(null, $pelicula->id_pelicula));
+        unlink($pelicula->imagen);
     }
 
     function updateTablaPelicula($id_pelicula, $titulo, $descripcion, $director, $estreno, $id_genero, $imagen=null){

@@ -1,7 +1,6 @@
 <?php
     include_once 'RouterClass.php';
     include_once 'Api/apiComentarioController.php';
-    include_once 'Api/apiController.php';
 
     $router = new Router();
 

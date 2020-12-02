@@ -19,7 +19,7 @@
                                 <td>{$pelicula->titulo}</td>
                                 <td>{$pelicula->tipo}</td>
                                 <td><a type="button" href="verMasPelicula/{$pelicula->id_pelicula}" class="btn btn-light"><i class="fas fa-plus-circle"></i></a></td>
-                                {if $logeado neq null && $logeado->administrador}
+                                {if $logeado neq null}
                                 <td><a type="button" href="deletePelicula/{$pelicula->id_pelicula}" class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
                                 <td><a type="button" href="formularioEditarPelicula/{$pelicula->id_pelicula}" class="btn btn-light"><i class="far fa-edit"></i></a></td>
                                 {/if}
@@ -31,17 +31,10 @@
         </article>
         <aside>
             {include file="filtro.tpl"}
-            {if $logeado neq null && $logeado->administrador}
+            {if $logeado neq null}
             <a type="button" href="formularioInsertarPelicula" class="btn btn-light">Insertar Pelicula<i class="fas fa-plus"></i></a>
             {/if}
         </aside>
     </div>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            </li>
-            {foreach from=$paginacion item=p}
-            <li class="page-item"><a class="page-link" href="{BASE_URL}peliculas/pagina/{$p+1}">{$p+1}</a></li>
-            {/foreach}
-        </ul>
-    </nav>
+{include file="paginacion.tpl"}
 {include file="footer.tpl"}

@@ -1,5 +1,6 @@
 {literal}
 <div id="vue-comentarios">
+    <h4>Promedio puntuacion: {{getPromedio()}}</h4>
     <h2 class="comentarios">Comentarios</h2>
     <ul id="ulComentarios">
         <li v-for="comentario in comentarios" class="p-3 mb-2 bg-danger">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-29 22:49:43
+/* Smarty version 3.1.34-dev-7, created on 2020-12-01 17:15:14
   from 'C:\xampp\htdocs\TPE\templates\soloPagePelicula.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fc417775528c9_27149197',
+  'unifunc' => 'content_5fc66c128f3f04_39884079',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8595a14231d988b5a3ac2ad9439c0679b89d8e5c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\soloPagePelicula.tpl',
-      1 => 1606686564,
+      1 => 1606839254,
       2 => 'file',
     ),
   ),
@@ -24,12 +24,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fc417775528c9_27149197 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc66c128f3f04_39884079 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 <div class="soloMovieTitulo">
-    <h2 class="tituloPelicula"><?php echo $_smarty_tpl->tpl_vars['pelicula']->value->titulo;?>
+    <h2 class="tituloPelicula p-3 mb-2 bg-danger"><?php echo $_smarty_tpl->tpl_vars['pelicula']->value->titulo;?>
 </h2>
 </div>
 <section class="especificacionPelicula">

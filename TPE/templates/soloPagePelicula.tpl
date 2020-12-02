@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 {include file="botonera.tpl"}
 <div class="soloMovieTitulo">
-    <h2 class="tituloPelicula">{$pelicula->titulo}</h2>
+    <h2 class="tituloPelicula p-3 mb-2 bg-danger">{$pelicula->titulo}</h2>
 </div>
 <section class="especificacionPelicula">
     <ul class="list-group list-group-flush font-weight-bold">

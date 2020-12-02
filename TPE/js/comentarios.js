@@ -13,25 +13,31 @@ document.addEventListener('DOMContentLoaded', ()=>{
 let app = new Vue({
     el: '#vue-comentarios',
     data: {
-        comentarios: []  
+        comentarios: [],  
     },
     methods: {
         deleteComentario(idComentario){
             fetch(url+'/'+idComentario, {
                 method:'DELETE',
             })
-            .then(response=>{
-                if (!response.ok){
-                    console.log("Error");
-                }
-                return response.json();
-            })
-            .then(comentarios=>{
+            .then(response => response.json())
+            .then(comentario => {
                 getComentariosPorPelicula();
             })
-            .catch(error=>{
-                console.log(error);
-            })
+            .catch(error => console.log(error));
+        },
+        getPromedio(){
+            let suma=0;
+            for(let i=0; i<this.comentarios.length; i++){
+                suma+= parseInt(this.comentarios[i].puntuacion);
+            }
+            let promedio= suma/this.comentarios.length;
+            if(promedio >0){
+                return Math.round(promedio * 10) / 10;
+            }
+            else{
+                return 0;
+            }
         }
     }
 });
@@ -66,5 +72,3 @@ function insertComentario(){
     })
     .catch(error => console.log(error));
 }
-
-

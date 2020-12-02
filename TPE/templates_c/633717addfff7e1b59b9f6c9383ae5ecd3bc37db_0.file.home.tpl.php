@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-25 23:52:44
+/* Smarty version 3.1.34-dev-7, created on 2020-11-30 18:41:00
   from 'C:\xampp\htdocs\TPE\templates\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fbee03c1d2cf3_26641216',
+  'unifunc' => 'content_5fc52eac7902f6_80218172',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '633717addfff7e1b59b9f6c9383ae5ecd3bc37db' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\home.tpl',
-      1 => 1606327284,
+      1 => 1606758049,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fbee03c1d2cf3_26641216 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc52eac7902f6_80218172 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -32,12 +32,12 @@ $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_
             <h2>Inicio</h2>
             <section>
                 <div class="portadas">
-                    <img src="./images/portada1.jpg">
-                    <img src="./images/portada2.jpg">
+                    <img class="imgHome" src="./images/portada1.jpg">
+                    <img class="imgHome" src="./images/portada2.jpg">
                 </div>
                 <div class="portadas"> 
-                    <img src="./images/portada3.jpg">
-                    <img src="./images/portada4.jpg">
+                    <img class="imgHome" src="./images/portada3.jpg">
+                    <img class="imgHome" src="./images/portada4.jpg">
                 </div>
             </section>
         </article>

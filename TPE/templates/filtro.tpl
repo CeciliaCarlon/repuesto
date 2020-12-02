@@ -1,18 +1,15 @@
 <aside>
-    <div>
-        <form action="filtrarPelicula/1" method="POST">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Filtrar por géneros</label>
-                </div>
-                <select name="select_genero" class="custom-select" id="inputGroupSelect01">
-                    {foreach from=$allGeneros item=genero};
-                        <option value="{$genero->id_genero}">{$genero->tipo}</option>
-                    {/foreach}
-                </select>
-            </div>
-        <button class="btn btn-light" type="submit">Filtrar</button>
-        <a type="button" class="btn btn-light" href="{BASE_URL}peliculas/pagina/1">Mostrar Todas</a>
-        </form>
+    <div class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle btn btn-danger" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filtrar
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        {foreach from=$allGeneros item=genero};
+            <a class="dropdown-item" href="filtrarPelicula/{$genero->id_genero}/pagina/1">{$genero->tipo}</a>
+        {/foreach}
+    </div>
+    <a type="button" class="btn btn-light" href="{BASE_URL}peliculas/pagina/1">Mostrar Todas</a>
     </div>
 </aside>
+

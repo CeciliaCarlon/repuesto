@@ -5,12 +5,12 @@
             <h2>Inicio</h2>
             <section>
                 <div class="portadas">
-                    <img src="./images/portada1.jpg">
-                    <img src="./images/portada2.jpg">
+                    <img class="imgHome" src="./images/portada1.jpg">
+                    <img class="imgHome" src="./images/portada2.jpg">
                 </div>
                 <div class="portadas"> 
-                    <img src="./images/portada3.jpg">
-                    <img src="./images/portada4.jpg">
+                    <img class="imgHome" src="./images/portada3.jpg">
+                    <img class="imgHome" src="./images/portada4.jpg">
                 </div>
             </section>
         </article>

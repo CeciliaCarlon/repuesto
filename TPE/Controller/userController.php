@@ -16,7 +16,7 @@ class userController{
         $this->helper= new helper();
     }
 
-    function Login($params=null){
+    function MostrarFormularioLogin($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         $this->view->showLogin($logeado);
     }
@@ -35,35 +35,58 @@ class userController{
 
     function TablaUsuarios($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-        $usuarios=$this->model->getUsuarios();
-        $this->view->showTablaUsuario($usuarios, $logeado);
+        if($logeado == null || $logeado->administrador == false){
+            $this->view->showError("No se permite el acceso a estos datos.", $logeado);
+        }
+        else{
+            $usuarios=$this->model->getUsuarios();
+            $this->view->showTablaUsuario($usuarios, $logeado);
+        }
     }
 
     function DeleteUsuario($params=null){
-        $idUsuario=$params[':ID'];
-        $this->model->borrarUsuario($idUsuario);
-        $this->view->showTablaUsuarioLocation();
+        $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
+        if($logeado == null || $logeado->administrador == false){
+            $this->view->showError("No se permite el acceso a estos datos.", $logeado);
+        }
+        else{
+            $idUsuario=$params[':ID'];
+            $this->model->borrarUsuario($idUsuario);
+            $this->view->showTablaUsuarioLocation();
+        }
     }
 
     function EstablecerComoAdmin($params=null){
-        $idUsuario=$params[':ID'];
-        $admin=true;
-        $this->model->setAdmin($admin,$idUsuario);
-        $this->view->showTablaUsuarioLocation();
+        $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
+        if($logeado == null || $logeado->administrador == false){
+            $this->view->showError("No se permite el acceso a estos datos.", $logeado);
+        }
+        else{
+            $idUsuario=$params[':ID'];
+            $admin=true;
+            $this->model->setAdmin($admin,$idUsuario);
+            $this->view->showTablaUsuarioLocation();
+        }
     }
 
     function QuitarComoAdmin($params=null){
-        $idUsuario= $params[':ID'];
-        $admin=false;
-        $this->model->setAdmin($admin,$idUsuario);
-        $this->view->showTablaUsuarioLocation();
+        $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
+        if($logeado == null || $logeado->administrador == false){
+            $this->view->showError("No se permite el acceso a estos datos.", $logeado);
+        }
+        else{
+            $idUsuario= $params[':ID'];
+            $admin=false;
+            $this->model->setAdmin($admin,$idUsuario);
+            $this->view->showTablaUsuarioLocation();
+        }
     }
 
     function Registrar($params=null){
         $email=$_POST['input_email'];
         $password=$_POST['input_contraseña'];
         $confirmacionPassword= $_POST['input_confirmacion_contraseña'];
-        $admin= 0;//chequear que no exista el email.
+        $admin= false;
         if (empty($email) || !isset($email) || empty($password) || !isset($password) 
         || empty($confirmacionPassword) || !isset($confirmacionPassword)){
             $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
@@ -102,7 +125,6 @@ class userController{
                 if(password_verify($password, $usuarioDB->password)){
                     session_start();
                     $_SESSION["email"] = $usuarioDB->email;
-                    $_SESSION["administrador"]= $usuarioDB->administrador;
                     $this->view->showHomeLocation();
                 }
                 else{
