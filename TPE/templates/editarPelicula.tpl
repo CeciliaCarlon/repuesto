@@ -17,14 +17,12 @@
         <label>Genero</label>
         <div class="input-group mb-3">
             <select name="editar_genero_select" class="custom-select" id="inputGroupSelect01">';
+                <option disabled>Generos</option>
                 {foreach from=$generos item=genero}
                     <option value="{$genero->id_genero}">{$genero->tipo}</option>
                 {/foreach}
             </select>
         </div>
-        {if $datosPeliculaPorEditar->imagen!==null}
-            <a type="button" class="btn btn-light" href="deleteImagen/{$datosPeliculaPorEditar->id_pelicula}">Eliminar Imagen<i class="fas fa-trash-alt"></i></a>
-        {/if}
         <div class="form-group">
             <label>Reemplazar Imagen</label>
             <input type="file" class="form-control-file" name="editar_imagen_input" id="exampleFormControlFile1">

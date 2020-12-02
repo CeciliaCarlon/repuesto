@@ -20,8 +20,8 @@
                                 {else}
                                 <td>Administrador</td>
                                 {/if}
-                                {if $logeado->administrador}
-                                <td><a type="button" href="deleteUsuario/{$usuario->id_usuario}" class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
+                                {if $usuario->email !== $logeado->email}
+                                    <td><a type="button" href="deleteUsuario/{$usuario->id_usuario}" class="btn btn-light"><i class="fas fa-trash-alt"></i></a></td>
                                     {if $usuario->administrador eq false}
                                     <td><a type="button" href="establecerAdmin/{$usuario->id_usuario}" class="btn btn-light"><i class="fas fa-user-cog"></i></i></a></td>
                                     {else}

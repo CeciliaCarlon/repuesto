@@ -54,7 +54,7 @@ class peliculaController{
         empty($_POST['input_estreno']) || !isset($_POST['input_estreno']) || empty($_POST['select_genero']) || !isset($_POST['select_genero'])){
             $this->view->showError("No se pudo insertar la pelicula. Por favor complete todos los campos.", $logeado);
         }
-        else if($logeado==null || $logeado->administrador == false){
+        else if($logeado==null || !$logeado->administrador){
             $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
@@ -96,8 +96,8 @@ class peliculaController{
         !isset($_POST['editar_genero_select'])){
             $this->view->showError("No se pudo editar la pelicula. Por favor complete todos los campos.", $logeado);
         }
-        else if ($logeado==null || $logeado->administrador == false){
-            $this->view->showError("No se puede realizar esta accion si no esta logeado", $logeado);
+        else if ($logeado==null || !$logeado->administrador){
+            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $idPelicula=$params[':ID'];
@@ -108,10 +108,12 @@ class peliculaController{
             $genero=$_POST['editar_genero_select'];
             if($_FILES['editar_imagen_input']['type'] == "image/jpg" || $_FILES['editar_imagen_input']['type'] == "image/jpeg" 
             || $_FILES['editar_imagen_input']['type'] == "image/png"){
+                $peli=$this->model->getPeliculaID($idPelicula);
+                $this->model->borrarImagenPelicula($peli);
                 $this->model->updateTablaPelicula($idPelicula, $titulo, $descripcion, $director, $estreno, $genero, $_FILES['editar_imagen_input']['tmp_name']);
             }
             else{
-                $this->model->updateTablaPelicula($idPelicula, $titulo, $descripcion, $director, $estreno, $genero, null);
+                $this->model->updateTablaPeliculaSinImagen($idPelicula, $titulo, $descripcion, $director, $estreno, $genero);
             }
             $this->view->showTablaPeliculasLocation();
         }
@@ -119,8 +121,8 @@ class peliculaController{
 
     function DeletePelicula($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-        if($logeado==null || $logeado->administrador == false){
-            $this->view->showError("No se puede realizar esta accion si no esta logeado", $logeado);
+        if($logeado==null || !$logeado->administrador){
+            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $idPelicula=$params[':ID'];
@@ -131,14 +133,14 @@ class peliculaController{
 
     function DeleteImagenPelicula($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-        if($logeado==null || $logeado->administrador == false){
-            $this->view->showError("No se puede realizar esta accion si no esta logeado", $logeado);
+        if($logeado==null || !$logeado->administrador){
+            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $idPelicula=$params[':ID'];
             $pelicula=$this->model->getPeliculaID($idPelicula);
             $this->model->borrarImagenPelicula($pelicula);
-            header("Location: ".BASE_URL."formularioEditarPelicula/".$idPelicula);
+            $this->view->showTablaPeliculasLocation();
         }
     }
 

@@ -27,7 +27,7 @@ class generoController{
         if(empty($_POST['input_tipo']) || !isset($_POST['input_tipo'])){
             $this->view->showError("No se pudo insertar el genero. Por favor complete todos los campos.", $logeado);
         }
-        else if($logeado==null || $logeado->administrador == false){
+        else if($logeado==null || !$logeado->administrador){
             $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
@@ -39,7 +39,7 @@ class generoController{
     
     function  DeleteGenero($params=null) {
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-        if($logeado == null || $logeado->administrador == false){
+        if($logeado == null || !$logeado->administrador){
             $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
@@ -54,7 +54,7 @@ class generoController{
         if(empty($_POST['editar_genero_input']) || !isset($_POST['editar_genero_input'])){
             $this->view->showError("No se pudo editar el genero. Por favor complete todos los campos.", $logeado);
         }
-        else if($logeado==null || $logeado->administrador == false){
+        else if($logeado==null || !$logeado->administrador){
             $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{

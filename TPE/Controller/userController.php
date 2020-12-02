@@ -35,7 +35,7 @@ class userController{
 
     function TablaUsuarios($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-        if($logeado == null || $logeado->administrador == false){
+        if($logeado == null || !$logeado->administrador){
             $this->view->showError("No se permite el acceso a estos datos.", $logeado);
         }
         else{
@@ -46,7 +46,7 @@ class userController{
 
     function DeleteUsuario($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-        if($logeado == null || $logeado->administrador == false){
+        if($logeado == null || !$logeado->administrador){
             $this->view->showError("No se permite el acceso a estos datos.", $logeado);
         }
         else{
@@ -58,7 +58,7 @@ class userController{
 
     function EstablecerComoAdmin($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-        if($logeado == null || $logeado->administrador == false){
+        if($logeado == null || !$logeado->administrador){
             $this->view->showError("No se permite el acceso a estos datos.", $logeado);
         }
         else{
@@ -71,7 +71,7 @@ class userController{
 
     function QuitarComoAdmin($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-        if($logeado == null || $logeado->administrador == false){
+        if($logeado == null || !$logeado->administrador){
             $this->view->showError("No se permite el acceso a estos datos.", $logeado);
         }
         else{

@@ -15,7 +15,7 @@ class peliculaModel{
     }
 
     function getAllDataPaginada($empezarDesde, $pelis_x_pagina){
-        $sentencia = $this->db->prepare( "SELECT * FROM pelicula INNER JOIN genero ON pelicula.id_genero=genero.id_genero 
+        $sentencia = $this->db->prepare( "SELECT * FROM pelicula INNER JOIN genero ON pelicula.id_genero=genero.id_genero ORDER BY pelicula.id_pelicula
         LIMIT $empezarDesde, $pelis_x_pagina");
         $sentencia->execute();
         return $sentencia->fetchAll(PDO::FETCH_OBJ);
@@ -65,6 +65,11 @@ class peliculaModel{
         $sentencia=$this->db->prepare("UPDATE pelicula SET imagen=? WHERE id_pelicula=?");
         $sentencia->execute(array(null, $pelicula->id_pelicula));
         unlink($pelicula->imagen);
+    }
+
+    function updateTablaPeliculaSinImagen($id_pelicula, $titulo, $descripcion, $director, $estreno, $id_genero){
+        $sentencia=$this->db->prepare("UPDATE pelicula SET titulo=?, descripcion=?, director=?, estreno=?, id_genero=? WHERE id_pelicula=?");
+        $sentencia->execute(array($titulo, $descripcion, $director, $estreno, $id_genero, $id_pelicula));
     }
 
     function updateTablaPelicula($id_pelicula, $titulo, $descripcion, $director, $estreno, $id_genero, $imagen=null){
