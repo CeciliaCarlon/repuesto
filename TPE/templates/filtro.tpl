@@ -5,7 +5,7 @@
     </a>
 
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        {foreach from=$allGeneros item=genero};
+        {foreach from=$allGeneros item=genero}
             <a class="dropdown-item" href="filtrarPelicula/{$genero->id_genero}/pagina/1">{$genero->tipo}</a>
         {/foreach}
     </div>

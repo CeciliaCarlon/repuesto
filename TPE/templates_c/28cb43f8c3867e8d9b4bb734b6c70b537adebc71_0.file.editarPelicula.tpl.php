@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-12-02 22:39:32
+/* Smarty version 3.1.34-dev-7, created on 2020-12-03 00:35:36
   from 'C:\xampp\htdocs\TPE\templates\editarPelicula.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fc809947e4a52_58140131',
+  'unifunc' => 'content_5fc824c87300f3_70933602',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '28cb43f8c3867e8d9b4bb734b6c70b537adebc71' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\editarPelicula.tpl',
-      1 => 1606945169,
+      1 => 1606952131,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fc809947e4a52_58140131 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc824c87300f3_70933602 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -48,24 +48,34 @@ $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_
         </div>
         <label>Genero</label>
         <div class="input-group mb-3">
-            <select name="editar_genero_select" class="custom-select" id="inputGroupSelect01">';
-                <option disabled>Generos</option>
+            <select name="editar_genero_select" class="custom-select" id="inputGroupSelect01">;
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['generos']->value, 'genero');
 $_smarty_tpl->tpl_vars['genero']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['genero']->value) {
 $_smarty_tpl->tpl_vars['genero']->do_else = false;
 ?>
+                    <?php if ($_smarty_tpl->tpl_vars['genero']->value->tipo == $_smarty_tpl->tpl_vars['datosPeliculaPorEditar']->value->tipo) {?>
+                       <option value="<?php echo $_smarty_tpl->tpl_vars['genero']->value->id_genero;?>
+" selected="<?php echo $_smarty_tpl->tpl_vars['genero']->value->tipo;?>
+"><?php echo $_smarty_tpl->tpl_vars['genero']->value->tipo;?>
+</option> 
+                    <?php } else { ?>
                     <option value="<?php echo $_smarty_tpl->tpl_vars['genero']->value->id_genero;?>
 "><?php echo $_smarty_tpl->tpl_vars['genero']->value->tipo;?>
 </option>
+                    <?php }?>
                 <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </select>
         </div>
         <div class="form-group">
-            <label>Reemplazar Imagen</label>
+            <?php if ($_smarty_tpl->tpl_vars['datosPeliculaPorEditar']->value->imagen == null) {?>
+                <label>Insertar Imagen</label>
+            <?php } else { ?>
+                <label>Reemplazar Imagen</label>
+            <?php }?>
             <input type="file" class="form-control-file" name="editar_imagen_input" id="exampleFormControlFile1">
         </div>
         <div>

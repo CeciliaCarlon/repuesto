@@ -16,15 +16,22 @@
         </div>
         <label>Genero</label>
         <div class="input-group mb-3">
-            <select name="editar_genero_select" class="custom-select" id="inputGroupSelect01">';
-                <option disabled>Generos</option>
+            <select name="editar_genero_select" class="custom-select" id="inputGroupSelect01">;
                 {foreach from=$generos item=genero}
+                    {if $genero->tipo eq $datosPeliculaPorEditar->tipo}
+                       <option value="{$genero->id_genero}" selected="{$genero->tipo}">{$genero->tipo}</option> 
+                    {else}
                     <option value="{$genero->id_genero}">{$genero->tipo}</option>
+                    {/if}
                 {/foreach}
             </select>
         </div>
         <div class="form-group">
-            <label>Reemplazar Imagen</label>
+            {if $datosPeliculaPorEditar->imagen eq null}
+                <label>Insertar Imagen</label>
+            {else}
+                <label>Reemplazar Imagen</label>
+            {/if}
             <input type="file" class="form-control-file" name="editar_imagen_input" id="exampleFormControlFile1">
         </div>
         <div>
