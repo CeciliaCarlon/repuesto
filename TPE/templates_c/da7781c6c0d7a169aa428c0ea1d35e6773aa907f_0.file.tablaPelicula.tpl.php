@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-12-03 00:38:43
+/* Smarty version 3.1.34-dev-7, created on 2020-12-03 02:07:03
   from 'C:\xampp\htdocs\TPE\templates\tablaPelicula.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fc82583e71148_84878883',
+  'unifunc' => 'content_5fc83a373e0a72_05319169',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'da7781c6c0d7a169aa428c0ea1d35e6773aa907f' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\tablaPelicula.tpl',
-      1 => 1606952322,
+      1 => 1606955400,
       2 => 'file',
     ),
   ),
@@ -25,7 +25,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fc82583e71148_84878883 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc83a373e0a72_05319169 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -52,10 +52,10 @@ $_smarty_tpl->tpl_vars['pelicula']->do_else = false;
                                 <td scope="row">
                                 <img  src="<?php echo $_smarty_tpl->tpl_vars['pelicula']->value->imagen;?>
 ">
-                                        <?php if ($_smarty_tpl->tpl_vars['pelicula']->value->imagen !== null && $_smarty_tpl->tpl_vars['logeado']->value != null && $_smarty_tpl->tpl_vars['logeado']->value->administrador) {?>
-                                        <a type="button" class="btn btn-light" href="deleteImagen/<?php echo $_smarty_tpl->tpl_vars['pelicula']->value->id_pelicula;?>
+                                    <?php if ($_smarty_tpl->tpl_vars['pelicula']->value->imagen !== null && $_smarty_tpl->tpl_vars['logeado']->value != null && $_smarty_tpl->tpl_vars['logeado']->value->administrador) {?>
+                                    <a type="button" class="btn btn-light" href="deleteImagen/<?php echo $_smarty_tpl->tpl_vars['pelicula']->value->id_pelicula;?>
 "><i class="fas fa-trash-alt"></i></a>
-                                        <?php }?>
+                                    <?php }?>
                                 </td>
                                 <td><?php echo $_smarty_tpl->tpl_vars['pelicula']->value->titulo;?>
 </td>

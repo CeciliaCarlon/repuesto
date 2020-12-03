@@ -5,7 +5,7 @@ include_once './Model/userModel.php';
 include_once './helper.php';
 
 class userController{
-   
+
     //ATRIBUTOS
     private $view;
     private $model;
@@ -22,7 +22,7 @@ class userController{
     function TablaUsuarios($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         if($logeado == null || !$logeado->administrador){
-            $this->helper->showError("No se permite el acceso a estos datos.", $logeado);
+            $this->view->showError("No se permite el acceso a estos datos.", $logeado);
         }
         else{
             $usuarios=$this->model->getUsuarios();
@@ -42,7 +42,7 @@ class userController{
         $password=$_POST['input_contraseña'];
         if (empty($email) || !isset($email) || empty($password) || !isset($password)){
             $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-            $this->helper->showError("No se pudo iniciar sesion. Por favor complete todos los campos.", $logeado);
+            $this->view->showError("No se pudo iniciar sesion. Por favor complete todos los campos.", $logeado);
         }
         else{
             $usuarioDB=$this->model->getUsuario($email);
@@ -54,12 +54,12 @@ class userController{
                 }
                 else{
                     $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-                    $this->helper->showError("La password ingresada es incorrecta. Por favor intente nuevamente", $logeado);
+                    $this->view->showError("La password ingresada es incorrecta. Por favor intente nuevamente", $logeado);
                 }
             }
             else{
                 $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-                $this->helper->showError("El email ingresado no esta registrado. Por favor intente nuevamente", $logeado);
+                $this->view->showError("El email ingresado no esta registrado. Por favor intente nuevamente", $logeado);
             }
         }
     }
@@ -87,14 +87,14 @@ class userController{
         if (empty($email) || !isset($email) || empty($password) || !isset($password) 
         || empty($confirmacionPassword) || !isset($confirmacionPassword)){
             $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-            $this->helper->showError("No se pudo resgistrar. Por favor complete todos los campos.", $logeado);
+            $this->view->showError("No se pudo resgistrar. Por favor complete todos los campos.", $logeado);
         }
         else{
             $emailExistente= $this->model->getUsuario($email);
             if($emailExistente==null){
                 if($password!=$confirmacionPassword){
                     $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-                    $this->helper->showError("No se pudo resgistrar. La contraseña es diferente.", $logeado);
+                    $this->view->showError("No se pudo resgistrar. La contraseña es diferente.", $logeado);
                 }
                 else{
                     $passwordEncriptada= password_hash($password, PASSWORD_DEFAULT);
@@ -104,7 +104,7 @@ class userController{
             }
             else{
                 $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-                $this->helper->showError("No se pudo resgistrar. Ya existe un usuario con ese email.", $logeado);
+                $this->view->showError("No se pudo resgistrar. Ya existe un usuario con ese email.", $logeado);
             }
         }
     }
@@ -113,7 +113,7 @@ class userController{
     function DeleteUsuario($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         if($logeado == null || !$logeado->administrador){
-            $this->helper->showError("No se permite el acceso a estos datos.", $logeado);
+            $this->view->showError("No se permite el acceso a estos datos.", $logeado);
         }
         else{
             $idUsuario=$params[':ID'];
@@ -126,7 +126,7 @@ class userController{
     function EstablecerComoAdmin($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         if($logeado == null || !$logeado->administrador){
-            $this->helper->showError("No se permite el acceso a estos datos.", $logeado);
+            $this->view->showError("No se permite el acceso a estos datos.", $logeado);
         }
         else{
             $idUsuario=$params[':ID'];
@@ -140,7 +140,7 @@ class userController{
     function QuitarComoAdmin($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         if($logeado == null || !$logeado->administrador){
-            $this->helper->showError("No se permite el acceso a estos datos.", $logeado);
+            $this->view->showError("No se permite el acceso a estos datos.", $logeado);
         }
         else{
             $idUsuario= $params[':ID'];

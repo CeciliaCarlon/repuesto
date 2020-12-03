@@ -39,4 +39,12 @@ class userView{
         $this->smarty->assign('logeado',$logeado);
         $this->smarty->display('./templates/registrarse.tpl');
     }
+
+    //MENSAJE ERROR
+    function showError($mensaje=" ", $logeado){
+        $this->smarty->assign('BASE_URL' , BASE_URL);
+        $this->smarty->assign('logeado',$logeado);
+        $this->smarty->assign('mensaje', $mensaje);
+        $this->smarty->display('./templates/error.tpl');
+    }
 }    

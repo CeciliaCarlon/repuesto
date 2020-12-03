@@ -60,4 +60,12 @@ class peliculaView{
         $this->smarty->assign('pelicula', $pelicula);
         $this->smarty->display('./templates/soloPagePelicula.tpl');
     }
+
+    //MENSAJE ERROR
+    function showError($mensaje=" ", $logeado){
+        $this->smarty->assign('BASE_URL' , BASE_URL);
+        $this->smarty->assign('logeado',$logeado);
+        $this->smarty->assign('mensaje', $mensaje);
+        $this->smarty->display('./templates/error.tpl');
+    }
 }

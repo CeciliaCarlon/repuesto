@@ -36,10 +36,10 @@ class generoController{
     function InsertarGenero($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         if(empty($_POST['input_tipo']) || !isset($_POST['input_tipo'])){
-            $this->helper->showError("No se pudo insertar el genero. Por favor complete todos los campos.", $logeado);
+            $this->view->showError("No se pudo insertar el genero. Por favor complete todos los campos.", $logeado);
         }
         else if($logeado==null || !$logeado->administrador){
-            $this->helper->showError("No se puede realizar esta accion si no es administrador", $logeado);
+            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $tipo=$_POST['input_tipo'];
@@ -61,10 +61,10 @@ class generoController{
     function EditarGenero($params = null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         if(empty($_POST['editar_genero_input']) || !isset($_POST['editar_genero_input'])){
-            $this->helper->showError("No se pudo editar el genero. Por favor complete todos los campos.", $logeado);
+            $this->view->showError("No se pudo editar el genero. Por favor complete todos los campos.", $logeado);
         }
         else if($logeado==null || !$logeado->administrador){
-            $this->helper->showError("No se puede realizar esta accion si no es administrador", $logeado);
+            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $id_genero=$params[':ID'];
@@ -78,7 +78,7 @@ class generoController{
     function  DeleteGenero($params=null) {
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         if($logeado == null || !$logeado->administrador){
-            $this->helper->showError("No se puede realizar esta accion si no es administrador", $logeado);
+            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $id_genero= $params[':ID'];

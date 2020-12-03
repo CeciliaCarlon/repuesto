@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-12-03 00:27:12
+/* Smarty version 3.1.34-dev-7, created on 2020-12-03 02:07:03
   from 'C:\xampp\htdocs\TPE\templates\filtro.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fc822d0d411a8_42959520',
+  'unifunc' => 'content_5fc83a37410ce7_78907948',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'cbdabc26c8875d03b00ff0f28501131f2d2e6c32' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\filtro.tpl',
-      1 => 1606951631,
+      1 => 1606955056,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5fc822d0d411a8_42959520 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc83a37410ce7_78907948 (Smarty_Internal_Template $_smarty_tpl) {
 ?><aside>
     <div class="dropdown show">
-    <a class="btn btn-secondary dropdown-toggle btn btn-danger" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <a class="btn btn-secondary dropdown-toggle btn btn-danger" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Filtrar
     </a>
-
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['allGeneros']->value, 'genero');

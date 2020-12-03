@@ -64,10 +64,10 @@ class peliculaController{
         if(empty($_POST['input_titulo']) || !isset($_POST['input_titulo']) || empty($_POST['input_descripcion']) || 
         !isset($_POST['input_descripcion']) || empty($_POST['input_director']) || !isset($_POST['input_director']) || 
         empty($_POST['input_estreno']) || !isset($_POST['input_estreno']) || empty($_POST['select_genero']) || !isset($_POST['select_genero'])){
-            $this->helper->showError("No se pudo insertar la pelicula. Por favor complete todos los campos.", $logeado);
+            $this->view->showError("No se pudo insertar la pelicula. Por favor complete todos los campos.", $logeado);
         }
         else if($logeado==null || !$logeado->administrador){
-            $this->helper->showError("No se puede realizar esta accion si no es administrador", $logeado);
+            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $titulo=$_POST['input_titulo'];
@@ -102,10 +102,10 @@ class peliculaController{
         !isset($_POST['editar_descripcion_input']) || empty($_POST['editar_director_input']) || !isset($_POST['editar_director_input']) || 
         empty($_POST['editar_estreno_input']) || !isset($_POST['editar_estreno_input']) || empty($_POST['editar_genero_select']) || 
         !isset($_POST['editar_genero_select'])){
-            $this->helper->showError("No se pudo editar la pelicula. Por favor complete todos los campos.", $logeado);
+            $this->view->showError("No se pudo editar la pelicula. Por favor complete todos los campos.", $logeado);
         }
         else if ($logeado==null || !$logeado->administrador){
-            $this->helper->showError("No se puede realizar esta accion si no es administrador", $logeado);
+            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $idPelicula=$params[':ID'];
@@ -131,7 +131,7 @@ class peliculaController{
     function DeletePelicula($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         if($logeado==null || !$logeado->administrador){
-            $this->helper->showError("No se puede realizar esta accion si no es administrador", $logeado);
+            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $idPelicula=$params[':ID'];
@@ -144,7 +144,7 @@ class peliculaController{
     function DeleteImagenPelicula($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         if($logeado==null || !$logeado->administrador){
-            $this->helper->showError("No se puede realizar esta accion si no es administrador", $logeado);
+            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $idPelicula=$params[':ID'];
