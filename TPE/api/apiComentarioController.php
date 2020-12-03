@@ -63,7 +63,7 @@ class apiComentarioController extends apiController{
     //INSERTAR COMENTARIO
     function insertComentario($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-        if($logeado==null && !$logeado->administrador){
+        if($logeado==null){
             $this->view->response("The requested page in not available.", 404);
         }
         else{
