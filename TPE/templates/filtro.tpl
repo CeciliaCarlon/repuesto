@@ -1,9 +1,8 @@
 <aside>
     <div class="dropdown show">
-    <a class="btn btn-secondary dropdown-toggle btn btn-danger" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <a class="btn btn-secondary dropdown-toggle btn btn-danger" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Filtrar
     </a>
-
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         {foreach from=$allGeneros item=genero}
             <a class="dropdown-item" href="filtrarPelicula/{$genero->id_genero}/pagina/1">{$genero->tipo}</a>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-26 01:56:41
+/* Smarty version 3.1.34-dev-7, created on 2020-12-03 01:20:44
   from 'C:\xampp\htdocs\TPE\templates\comentarios.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fbefd49bc6e38_47819005',
+  'unifunc' => 'content_5fc82f5cecf511_10847107',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6227aa92e16ab44af23784dd2a4c8d82db052431' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\comentarios.tpl',
-      1 => 1606343097,
+      1 => 1606954843,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:vue/comentarios.vue' => 1,
   ),
 ),false)) {
-function content_5fbefd49bc6e38_47819005 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc82f5cecf511_10847107 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="contenedorComentarios">
 <input type="hidden" id="idPelicula" value="<?php echo $_smarty_tpl->tpl_vars['pelicula']->value->id_pelicula;?>
 ">
@@ -47,7 +47,7 @@ function content_5fbefd49bc6e38_47819005 (Smarty_Internal_Template $_smarty_tpl)
         <input type="hidden" id="idUsuario" value="<?php echo $_smarty_tpl->tpl_vars['logeado']->value->id_usuario;?>
 ">
         <div class="formulario_contenido">
-            <button class="btn btn-light" id="enviar" type="submit">Comentar</button>
+            <button class="btn btn-light" id="enviar" type="submit">Deja tu comentario</button>
         </div>       
      </form>
 </section>   

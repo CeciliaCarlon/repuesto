@@ -17,9 +17,9 @@
                             <tr>
                                 <td scope="row">
                                 <img  src="{$pelicula->imagen}">
-                                        {if $pelicula->imagen!==null}
-                                        <a type="button" class="btn btn-light" href="deleteImagen/{$pelicula->id_pelicula}"><i class="fas fa-trash-alt"></i></a>
-                                        {/if}
+                                    {if $pelicula->imagen!==null && $logeado neq null && $logeado->administrador}
+                                    <a type="button" class="btn btn-light" href="deleteImagen/{$pelicula->id_pelicula}"><i class="fas fa-trash-alt"></i></a>
+                                    {/if}
                                 </td>
                                 <td>{$pelicula->titulo}</td>
                                 <td>{$pelicula->tipo}</td>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-30 18:41:00
+/* Smarty version 3.1.34-dev-7, created on 2020-12-03 01:26:49
   from 'C:\xampp\htdocs\TPE\templates\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fc52eac7902f6_80218172',
+  'unifunc' => 'content_5fc830c944efa4_65300827',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '633717addfff7e1b59b9f6c9383ae5ecd3bc37db' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\home.tpl',
-      1 => 1606758049,
+      1 => 1606955116,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5fc52eac7902f6_80218172 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc830c944efa4_65300827 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -41,7 +41,6 @@ $_smarty_tpl->_subTemplateRender("file:botonera.tpl", $_smarty_tpl->cache_id, $_
                 </div>
             </section>
         </article>
-        
         <aside>
             <h2 class="comentarios">Comentarios</h2>
             <div>

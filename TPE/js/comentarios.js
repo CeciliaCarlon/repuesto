@@ -1,5 +1,6 @@
 "use strict";
 
+//INICIO
 document.addEventListener('DOMContentLoaded', ()=>{
 
     getComentariosPorPelicula();
@@ -7,9 +8,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
     document.querySelector("#insertarComentario").addEventListener("submit", e=>{
         e.preventDefault();
         insertComentario();
-    })
-})
+    });
+});
 
+//VUE
 let app = new Vue({
     el: '#vue-comentarios',
     data: {
@@ -42,8 +44,10 @@ let app = new Vue({
     }
 });
 
+//URL DE API
 const url= 'api/comentarios';
 
+//OBTENER COMENTARIOS POR PELICULA
 function getComentariosPorPelicula(){
     let idPelicula=document.querySelector("#idPelicula").value;
     fetch ('api/peliculas/'+idPelicula+'/comentarios')
@@ -52,6 +56,7 @@ function getComentariosPorPelicula(){
     .catch(error => console.log(error));
 }
 
+//INSERTAR COMENTARIO
 function insertComentario(){
     const comentario ={
         texto: document.querySelector("#comentario").value,

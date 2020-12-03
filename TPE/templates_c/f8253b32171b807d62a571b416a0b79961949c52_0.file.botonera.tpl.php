@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-11-29 03:49:47
+/* Smarty version 3.1.34-dev-7, created on 2020-12-03 01:20:02
   from 'C:\xampp\htdocs\TPE\templates\botonera.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5fc30c4b45ac50_90445091',
+  'unifunc' => 'content_5fc82f3242b191_85237579',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f8253b32171b807d62a571b416a0b79961949c52' => 
     array (
       0 => 'C:\\xampp\\htdocs\\TPE\\templates\\botonera.tpl',
-      1 => 1606618185,
+      1 => 1606954764,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5fc30c4b45ac50_90445091 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5fc82f3242b191_85237579 (Smarty_Internal_Template $_smarty_tpl) {
 ?><header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <h1 class="navbar-brand">MABREX</h1>

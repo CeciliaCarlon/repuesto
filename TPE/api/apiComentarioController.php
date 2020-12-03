@@ -5,24 +5,26 @@ include_once 'apiController.php';
 
 class apiComentarioController extends apiController{
 
+    //CONSTRUCTOR
     function __construct(){
         parent::__construct();
         $this->model= new comentarioModel();
     }
 
+    //OBTENER COMENTARIOS
     function getComentarios($params= null){
         $comentarios= $this->model->getAllComentarios();
-        if($comentarios){
-            $this->view->response($comentarios, 200);
-        }
+        $this->view->response($comentarios, 200);
     }
 
+    //OBTENER COMENTARIOS POR PELICULA
     function getComentariosPorPelicula($params=null){
         $idPelicula=$params[':ID'];
         $comentarios= $this->model->getComentarioPorPeli($idPelicula);
         $this->view->response($comentarios, 200);
     }
 
+    //OBTENER COMENTARIO
     function getComentario($params= null){
         $id=$params[':ID'];
         $comentario= $this->model->getComentario($id);
@@ -34,6 +36,7 @@ class apiComentarioController extends apiController{
         }
     }
 
+    //ELIMINAR COMENTARIO
     function deleteComentario($params=null){
         $id=$params[':ID'];
         $comentario= $this->model->getComentario($id);
@@ -46,6 +49,7 @@ class apiComentarioController extends apiController{
         }
     }
 
+    //INSERTAR COMENTARIO
     function insertComentario($params=null){
         $body= $this->getData();
         $texto= $body->texto;
@@ -61,6 +65,7 @@ class apiComentarioController extends apiController{
         }
     }
 
+    //EDITAR COMENTARIO
     function editComentario($params=null){
         $id=$params[':ID'];
         $comentario= $this->model->getComentario($id);

@@ -14,7 +14,6 @@
                 </div>
             </section>
         </article>
-        
         <aside>
             <h2 class="comentarios">Comentarios</h2>
             <div>

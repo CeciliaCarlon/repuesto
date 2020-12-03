@@ -6,13 +6,15 @@ include_once './Model/generoModel.php';
 include_once './helper.php';
 
 class peliculaController{
-
+    
+    //ATRIBUTOS
     private $view;
     private $model;
     private $modelGenero;
     private $helper;
     private $pelis_x_pagina;
 
+    //CONSTRUCTOR
     function __construct(){
         $this->view = new peliculaView();
         $this->model = new peliculaModel();
@@ -21,11 +23,13 @@ class peliculaController{
         $this->pelis_x_pagina=3;
     }
 
+    //HOME
     function Home($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         $this->view->showHome($logeado);
     }
 
+    //TABLA PELICULAS
     function TablaPeliculas($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         //la pagina en la que estamos parados
@@ -37,7 +41,7 @@ class peliculaController{
         $peliculas= $this->model->getPeliculas();
         $totalPelis=count($peliculas);
         //la cantidad de peliculas que queremos mostrar dividido la cantidad de paginas que se necesitan 
-        //se redondea para arriba
+        //se redondea para arriba con el ceil()
         $totalPaginas= ceil($totalPelis/$this->pelis_x_pagina);
         $paginas=[];
         for($i=0; $i<$totalPaginas; $i++){
@@ -47,15 +51,23 @@ class peliculaController{
         $this->view->showTablaPeliculas($Allpeliculas, $generos, $generos, $paginas, $accion, $logeado);
     }
 
+    //FORMULARIO PARA INSERTAR PELICULA
+    function MostrarFormularioInsertarPelicula($params=null){
+        $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
+        $genero=$this->modelGenero->GetGeneros();
+        $this->view->showFormularioInsertarPelicula($genero, $logeado);
+    }
+
+    //INSERTAR PELICULA
     function InsertarPelicula($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         if(empty($_POST['input_titulo']) || !isset($_POST['input_titulo']) || empty($_POST['input_descripcion']) || 
         !isset($_POST['input_descripcion']) || empty($_POST['input_director']) || !isset($_POST['input_director']) || 
         empty($_POST['input_estreno']) || !isset($_POST['input_estreno']) || empty($_POST['select_genero']) || !isset($_POST['select_genero'])){
-            $this->view->showError("No se pudo insertar la pelicula. Por favor complete todos los campos.", $logeado);
+            $this->helper->showError("No se pudo insertar la pelicula. Por favor complete todos los campos.", $logeado);
         }
         else if($logeado==null || !$logeado->administrador){
-            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
+            $this->helper->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $titulo=$_POST['input_titulo'];
@@ -74,12 +86,7 @@ class peliculaController{
         }  
     }
 
-    function MostrarFormularioInsertarPelicula($params=null){
-        $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-        $genero=$this->modelGenero->GetGeneros();
-        $this->view->showFormularioInsertarPelicula($genero, $logeado);
-    }
-
+    //FORMULARIO PARA EDITAR PELICULA
     function MostrarFormularioEditarPelicula($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         $idPelicula=$params[':ID'];
@@ -88,16 +95,17 @@ class peliculaController{
         $this->view->showFormularioEditarPelicula($genero,$datosPeliculaPorEditar, $logeado);
     }
 
+    //EDITAR PELICULA
     function EditarPelicula($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         if(empty($_POST['editar_titulo_input']) || !isset($_POST['editar_titulo_input']) || empty($_POST['editar_descripcion_input']) || 
         !isset($_POST['editar_descripcion_input']) || empty($_POST['editar_director_input']) || !isset($_POST['editar_director_input']) || 
         empty($_POST['editar_estreno_input']) || !isset($_POST['editar_estreno_input']) || empty($_POST['editar_genero_select']) || 
         !isset($_POST['editar_genero_select'])){
-            $this->view->showError("No se pudo editar la pelicula. Por favor complete todos los campos.", $logeado);
+            $this->helper->showError("No se pudo editar la pelicula. Por favor complete todos los campos.", $logeado);
         }
         else if ($logeado==null || !$logeado->administrador){
-            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
+            $this->helper->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $idPelicula=$params[':ID'];
@@ -119,10 +127,11 @@ class peliculaController{
         }
     }
 
+    //ELIMINAR PELICULA
     function DeletePelicula($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         if($logeado==null || !$logeado->administrador){
-            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
+            $this->helper->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $idPelicula=$params[':ID'];
@@ -131,10 +140,11 @@ class peliculaController{
         }
     }
 
+    //ELIMINAR IMAGEN DE PELICULA
     function DeleteImagenPelicula($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         if($logeado==null || !$logeado->administrador){
-            $this->view->showError("No se puede realizar esta accion si no es administrador", $logeado);
+            $this->helper->showError("No se puede realizar esta accion si no es administrador", $logeado);
         }
         else{
             $idPelicula=$params[':ID'];
@@ -144,21 +154,22 @@ class peliculaController{
         }
     }
 
+    //FILTRAR PELICULA POR GENERO
     function FiltrarPelicula($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
-        //genero
+        //se obtiene el id del genero por parametro
         $id_genero=$params[':ID'];
         $generoElegido=$this->modelGenero->GetGeneroID($id_genero);
-        //paginacion
+        //se obtiene en que pagina se esta posicionado por parametro
         $pagina=$params[':PAGE'];
         $empezarDesde=($pagina-1)*$this->pelis_x_pagina;
         //buscar las peliculas paginadas y por genero
         $peliculasFiltradas=$this->model->getPeliculasPorGeneroPaginada($generoElegido->id_genero, $empezarDesde, $this->pelis_x_pagina);
-        //obtener mas data
         $generos=$this->modelGenero->GetGeneros();
         $peliculas= $this->model->getPeliculasPorGenero($id_genero);
         $totalPelis=count($peliculas);
-        //la cantidad de paginas que se necesitan dividido la cantidad de peliculas que queremos mostrar
+        //la cantidad de peliculas que queremos mostrar dividido la cantidad de paginas que se necesitan 
+        //se redondea para arriba con el ceil()
         $totalPaginas= ceil($totalPelis/$this->pelis_x_pagina);
         $paginas=[];
         for($i=0; $i<$totalPaginas; $i++){
@@ -168,6 +179,7 @@ class peliculaController{
         $this->view->showTablaPeliculas($peliculasFiltradas,$generoElegido, $generos, $paginas, $accion, $logeado);
     }
 
+    //MOSTRAR MAS INFORMACION DE LA PELICULA
     function MostrarMasInformacionPelicula($params=null){
         $logeado=$this->helper->checkLoggedInAndReturnUserInfo();
         $idPelicula=$params[':ID'];
